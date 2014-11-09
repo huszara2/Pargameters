@@ -1,3 +1,4 @@
+<?php
 /*
  *Alana Huszar
  *CSC 415
@@ -6,7 +7,7 @@
 
 /* Games object
 */
-<?php
+
 	class Game{
 		private $title;
 		private $type;
