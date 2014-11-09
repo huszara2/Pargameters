@@ -18,7 +18,7 @@
 		private $minPlayers;
 		private $maxPlayers;
 
-		function __construct($title,$type,$minAge,$maxAge,$minTime,$maxTime,$genre,$minPlayers,$maxPlayers) {
+		public function __construct($title,$type,$minAge,$maxAge,$minTime,$maxTime,$genre,$minPlayers,$maxPlayers) {
 			$this->title=$title;
 			$this->type=$type;
 			$this->minAge=$minAge;
