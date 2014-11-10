@@ -126,8 +126,6 @@
 			}
 		}
 		
-		public function compareTo($otherGame) {
-			if $this->compareType
 	}
 ?>
 	
