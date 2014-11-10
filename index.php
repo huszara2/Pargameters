@@ -1,5 +1,5 @@
 <body>
-<?php include 'game.php';?>
+<?php include ('game.php');?>
 		
 <?php
 
@@ -9,6 +9,7 @@
 	echo $gameTest->getTitle();
 	$gameTest->setType('tabletop');
 	echo $gameTest->getType();
+	echo var_dump($gameTest);
 
 ?>
 
