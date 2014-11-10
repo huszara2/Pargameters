@@ -65,7 +65,7 @@
 		}
 		
 		public function ageRange() {
-			if ($this->maxAge>99) {
+			if ($maxAge>99) {
 				return this->minAge . "+";
 			}
 			else {
@@ -118,7 +118,7 @@
 		}
 		
 		public function __toString() {
-			if($this->maxAge>99) {
+			if($maxAge>99) {
 				return $this->title . ", " . $this->type . ", " . $this->minAge .  "+ years, " . $this->minTime . "-" . $this->maxTime . " minutes, " . $this->genre . ", " . $this->minPlayers . "-" . $this->maxPlayers . " players.";
 			}
 			else {
