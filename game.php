@@ -11,13 +11,13 @@
 	class Game{
 		private $title;
 		private $type;
-		private $minAge;
-		private $maxAge;
-		private $minTime;
-		private $maxTime;
+		private int $minAge;
+		private int $maxAge;
+		private int $minTime;
+		private int $maxTime;
 		private $genre;
-		private $minPlayers;
-		private $maxPlayers;
+		private int $minPlayers;
+		private int $maxPlayers;
 
 		public function __construct($title,$type,$minAge,$maxAge,$minTime,$maxTime,$genre,$minPlayers,$maxPlayers) {
 			$this->title=$title;
