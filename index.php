@@ -4,7 +4,6 @@
 <?php
 
 	echo 'Pargameters';	
-	$toPrint;
 	
 	$gameTest = new Game('Dominion','tabletop',10,100,30,50,'Deck building',2,5);
 	echo " " . $gameTest->ageRange() . " ";
