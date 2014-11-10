@@ -56,7 +56,7 @@
 		}
 		
 		public function getMaxAge() {
-			$return $this->maxAge;
+			return $this->maxAge;
 		}
 	}
 ?>
