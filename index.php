@@ -6,10 +6,9 @@
 	echo 'Pargameters';	
 	$toPrint;
 	
-	$gameTest = new Game('Dominion','U',10,100,30,50,'Deck building',2,5);
-	echo " " . $gameTest->getTitle() . " ";
-	$gameTest->setType('tabletop');
-	echo $gameTest->getType() . " ";
+	$gameTest = new Game('Dominion','tabletop',10,100,30,50,'Deck building',2,5);
+	echo " " . $gameTest->ageRange() . " ";
+	echo $gameTest->timeRange() . " ";
 	echo "\n";
 	echo $gameTest;
 	echo "\n";

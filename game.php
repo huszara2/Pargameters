@@ -18,6 +18,7 @@
 		private $genre;
 		private $minPlayers;
 		private $maxPlayers;
+		private $compareType=0;
 
 		public function __construct($title,$type,$minAge,$maxAge,$minTime,$maxTime,$genre,$minPlayers,$maxPlayers) {
 			$this->title=$title;
@@ -63,6 +64,15 @@
 			$this->maxAge=$newMax;
 		}
 		
+		public function ageRange() {
+			if ($this->maxAge>99) {
+				return this->minAge . "+";
+			}
+			else {
+				return this->minAge . "-" . this->maxAge;
+			}
+		}
+		
 		public function getMinTime() {
 			return $this->minTime;
 		}
@@ -79,6 +89,10 @@
 			$this->maxTime=$newMax;
 		}
 		
+		public function timeRange() {
+			return $this->minTime() . "-" . this->maxTime();
+		}
+				
 		public function getGenre() {
 			return $this->genre;
 		}
@@ -104,8 +118,16 @@
 		}
 		
 		public function __toString() {
-			return $this->title . ", " . $this->type . ", " . $this->minAge . "-" . $this->maxAge . " years, " . $this->minTime . "-" . $this->maxTime . " minutes, " . $this->genre . ", " . $this->minPlayers . "-" . $this->maxPlayers . " players.";
+			if($this->maxAge>99) {
+				return $this->title . ", " . $this->type . ", " . $this->minAge .  "+ years, " . $this->minTime . "-" . $this->maxTime . " minutes, " . $this->genre . ", " . $this->minPlayers . "-" . $this->maxPlayers . " players.";
+			}
+			else {
+				return $this->title . ", " . $this->type . ", " . $this->minAge . "-" . $this->maxAge . " years, " . $this->minTime . "-" . $this->maxTime . " minutes, " . $this->genre . ", " . $this->minPlayers . "-" . $this->maxPlayers . " players.";
+			}
 		}
+		
+		public function compareTo($otherGame) {
+			if $this->compareType
 	}
 ?>
 	
