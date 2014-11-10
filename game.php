@@ -32,22 +32,32 @@
 		}
 		
 		public function getTitle() {
-			return $title;
+			return $this->title;
 		}
 		
 		public function setTitle($newTitle) {
-			$title=$newTitle;
+			$this->title=$newTitle;
 		}
 		
 		public function getType() {
-			return $type;
+			return $this->type;
 		}
 		
 		public function setType($newType) {
-			$type=$newType;
+			$this->type=$newType;
 		}
 
-
+		public function getMinAge() {
+			return $this->minAge;
+		}
+		
+		public function setMinAge($newMin) {
+			$this->minAge=$newMin;
+		}
+		
+		public function getMaxAge() {
+			$return $this->maxAge;
+		}
 	}
 ?>
 	
