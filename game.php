@@ -63,9 +63,9 @@
 			$this->maxAge=$newMax;
 		}
 		
-		/*public function ageRange() {
+		public function ageRange() {
 			return $this->minAge . "-" . $this->maxAge;
-		}*/
+		}
 		
 		public function getMinTime() {
 			return $this->minTime;
