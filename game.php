@@ -65,12 +65,7 @@
 		}
 		
 		public function ageRange() {
-			if ($maxAge>99) {
-				return $this->minAge . "+";
-			}
-			else {
 				return $this->minAge . "-" . $this->maxAge;
-			}
 		}
 		
 		public function getMinTime() {
@@ -118,12 +113,7 @@
 		}
 		
 		public function __toString() {
-			if($maxAge>99) {
-				return $this->title . ", " . $this->type . ", " . $this->minAge .  "+ years, " . $this->minTime . "-" . $this->maxTime . " minutes, " . $this->genre . ", " . $this->minPlayers . "-" . $this->maxPlayers . " players.";
-			}
-			else {
 				return $this->title . ", " . $this->type . ", " . $this->minAge . "-" . $this->maxAge . " years, " . $this->minTime . "-" . $this->maxTime . " minutes, " . $this->genre . ", " . $this->minPlayers . "-" . $this->maxPlayers . " players.";
-			}
 		}
 		
 	}
