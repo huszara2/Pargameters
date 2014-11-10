@@ -10,6 +10,10 @@
 	echo " " . $gameTest->getTitle() . " ";
 	$gameTest->setType('tabletop');
 	echo $gameTest->getType() . " ";
+	echo "\n";
+	echo $gameTest;
+	echo "\n";
+	echo $gameTest->toString();
 
 
 ?>

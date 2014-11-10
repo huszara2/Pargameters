@@ -58,6 +58,54 @@
 		public function getMaxAge() {
 			return $this->maxAge;
 		}
+		
+		public function setMaxAge($newMax) {
+			$this->maxAge=$newMax;
+		}
+		
+		public function getMinTime() {
+			return $this->minTime;
+		}
+		
+		public function setMinTime($newMin) {
+			$this->minTime=$newMin;
+		}
+		
+		public function getMaxTime() {
+			return $this->maxTime;
+		}
+		
+		public function setMaxTime($newMax) {
+			$this->maxTime=$newMax;
+		}
+		
+		public function getGenre() {
+			return $this->genre;
+		}
+		
+		public function setGenre($newGen) {
+			$this->setGenre=$newGen;
+		}
+		
+		public function getMinPlayers() {
+			return $this->minAge;
+		}
+		
+		public function setMinPlayers($newMin) {
+			$this->minPlayers=$newMin;
+		}
+		
+		public function getMaxPlayers() {
+			return $this->maxPlayers;
+		}
+		
+		public function setMaxPlayers($newMax) {
+			$this->maxPlayers=$newMax;
+		}
+		
+		public function __toString() {
+			return $this->title . ", " . $this->type . ", " . $this->minAge . "-" . $this->maxAge . " years, " . $this->minTime . "-" . $this->maxTime . " minutes, " . $this->genre . ", " . $this->minPlayers . "-" . $this->maxPlayers . " players."
+		}
 	}
 ?>
 	
