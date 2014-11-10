@@ -64,7 +64,7 @@
 		}
 		
 		public function ageRange() {
-			if(this->maxAge()>99) {
+			if($maxAge()>99) {
 				return $this->minAge . "+";
 			}
 			else {
