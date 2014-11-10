@@ -7,10 +7,10 @@
 	$toPrint;
 	
 	$gameTest = new Game('Dominion','U',10,100,30,50,'Deck building',2,5);
-	echo $gameTest->getTitle();
+	echo " " . $gameTest->getTitle() . " ";
 	$gameTest->setType('tabletop');
-	$toPrint=$gameTest->getType();
-	echo $toPrint;
+	echo $gameTest->getType() . " ";
+
 
 ?>
 
