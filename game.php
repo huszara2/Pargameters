@@ -18,7 +18,6 @@
 		private $genre;
 		private $minPlayers;
 		private $maxPlayers;
-		private $compareType=0;
 
 		public function __construct($title,$type,$minAge,$maxAge,$minTime,$maxTime,$genre,$minPlayers,$maxPlayers) {
 			$this->title=$title;
@@ -65,7 +64,7 @@
 		}
 		
 		public function ageRange() {
-				return $this->minAge . "-" . $this->maxAge;
+			return $this->minAge . "-" . $this->maxAge;
 		}
 		
 		public function getMinTime() {
