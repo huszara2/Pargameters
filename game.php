@@ -64,7 +64,14 @@
 		}
 		
 		public function ageRange() {
-			return $this->minAge . "-" . $this->maxAge;
+			$rangeReturn;
+			if(this->maxAge()>99) {
+				$rangeReturn=$this->minAge . "+";
+			}
+			else {
+				$this->minAge . "-" . $this->maxAge;
+			}
+			return $rangeReturn;
 		}
 		
 		public function getMinTime() {
