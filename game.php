@@ -65,7 +65,16 @@
 		}
 		
 		public function ageRange() {
+<<<<<<< HEAD
 			return this->minAge . "-" . this->maxAge;
+=======
+			if ($this->maxAge>99) {
+				return this->minAge . "+";
+			}
+			else {
+				return this->minAge . "-" . this->maxAge;
+			}
+>>>>>>> parent of 3f45137... $maxAge
 		}
 		
 		public function getMinTime() {
@@ -113,7 +122,16 @@
 		}
 		
 		public function __toString() {
+<<<<<<< HEAD
 			return $this->title . ", " . $this->type . ", " . $this->minAge . "-" . $this->maxAge . " years, " . $this->minTime . "-" . $this->maxTime . " minutes, " . $this->genre . ", " . $this->minPlayers . "-" . $this->maxPlayers . " players.";
+=======
+			if($this->maxAge>99) {
+				return $this->title . ", " . $this->type . ", " . $this->minAge .  "+ years, " . $this->minTime . "-" . $this->maxTime . " minutes, " . $this->genre . ", " . $this->minPlayers . "-" . $this->maxPlayers . " players.";
+			}
+			else {
+				return $this->title . ", " . $this->type . ", " . $this->minAge . "-" . $this->maxAge . " years, " . $this->minTime . "-" . $this->maxTime . " minutes, " . $this->genre . ", " . $this->minPlayers . "-" . $this->maxPlayers . " players.";
+			}
+>>>>>>> parent of 3f45137... $maxAge
 		}
 		
 	}
