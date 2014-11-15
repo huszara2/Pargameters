@@ -11,6 +11,7 @@
 	echo $gameTest->ageRange();
 	echo "\n";
 	echo $gameTest->__toString();
+	echo $gameTest->timeRange();
 
 
 ?>
