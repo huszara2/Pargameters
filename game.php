@@ -11,13 +11,13 @@
 	class Game{
 		private $title;
 		private $type;
-		private int $minAge;
-		private int $maxAge;
-		private int $minTime;
-		private int $maxTime;
+		private $minAge;
+		private $maxAge;
+		private $minTime;
+		private $maxTime;
 		private $genre;
-		private int $minPlayers;
-		private int $maxPlayers;
+		private $minPlayers;
+		private $maxPlayers;
 
 		public function __construct($title,$type,$minAge,$maxAge,$minTime,$maxTime,$genre,$minPlayers,$maxPlayers) {
 			$this->title=$title;
@@ -64,7 +64,7 @@
 		}
 		
 		public function ageRange() {
-			if($maxAge>99) {
+			if($this->maxAge>99) {
 				return $this->minAge . "+";
 			}
 			else {
