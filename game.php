@@ -117,7 +117,7 @@
 		}
 		
 		public function __toString() {
-				return $this->title . ", " . $this->type . ", " . $this->minAge . "-" . $this->maxAge . " years, " . $this->minTime . "-" . $this->maxTime . " minutes, " . $this->genre . ", " . $this->minPlayers . "-" . $this->maxPlayers . " players.";
+				return $this->title . ", " . $this->type . ", " . $this->ageRange() . " years, " . $this->minTime . "-" . $this->maxTime . " minutes, " . $this->genre . ", " . $this->minPlayers . "-" . $this->maxPlayers . " players.";
 		}
 		
 		

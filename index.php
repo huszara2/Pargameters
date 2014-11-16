@@ -1,13 +1,22 @@
 <body>
+<head>
+<title>Pargameters</title>
+</head>
+<body>
+<form action="submit.php" method="post">
+<input type="text" name="customerName" value="Default text here" />
+<input type="submit" name="submit_button" value="Press to Submit" />
+
+</form>
+
+
 <?php include_once("game.php");?>
 		
 <?php
-
-	echo 'Pargameters';	
 	
-	$gameTest1 = new Game('Dominion','tabletop',10,100,30,50,'Deck building',2,5);
-	$gameTest2 = new Game('Superfight','tabletop',6,100,20,40,'Storytelling',3,10);
-	$gameTest3 = new Game('MarioKart 8','video',5,100,3,60,'Racing',1,8);
+	$gameTest1 = new Game('Dominion','Tabletop',10,100,30,50,'Deck building',2,5);
+	$gameTest2 = new Game('Superfight','Tabletop',6,100,20,40,'Storytelling',3,10);
+	$gameTest3 = new Game('MarioKart 8','Video',5,100,3,60,'Racing',1,8);
 	
 	$list=new SplDoublyLinkedList();
 	$list->push($gameTest1);
@@ -19,7 +28,7 @@
 	
 	$list->rewind();
 	while($list->valid()) {
-		echo $list->current();
+		echo $list->current() . "\n";
 		$list->next();
 	}
 
