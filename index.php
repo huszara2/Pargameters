@@ -1,6 +1,5 @@
 <body>
-<?php include_once("game.php");
-	  include_once("collection.php")?>
+<?php include_once("game.php");?>
 		
 <?php
 
@@ -15,13 +14,14 @@
 	$list->push($gameTest2);
 	$list->push($gameTest3);
 	
-	$myCollection = new Collection($list);
 	
 	echo "\n";
-	echo $gameTest2;
-	echo $gameTest2->timeRange();
-	//echo $myCollection;
-	echo $list;
+	
+	$list->rewind();
+	while($list->valid()) {
+		echo $list;
+		$list->next();
+	}
 
 ?>
 
