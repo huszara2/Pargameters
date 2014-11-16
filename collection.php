@@ -10,7 +10,7 @@
 
 	class Collection{
 		private $user;
-		private $masterCollection = SplDoublyLinkedList;
+		private $masterCollection;
 		
 		public function __construct($masterCollection) {
 			$this->masterCollection=$masterCollection;

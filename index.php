@@ -1,6 +1,6 @@
 <body>
 <?php include_once("game.php");
-	  //include_once("collection.php")?>
+	  include_once("collection.php")?>
 		
 <?php
 
@@ -15,7 +15,7 @@
 	$list->push($gameTest2);
 	$list->push($gameTest3);
 	
-	//$myCollection = new Collection($list);
+	$myCollection = new Collection($list);
 	
 	echo "\n";
 	echo $gameTest2;
