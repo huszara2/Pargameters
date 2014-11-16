@@ -19,7 +19,7 @@
 	
 	$list->rewind();
 	while($list->valid()) {
-		echo $list;
+		echo $list->current();
 		$list->next();
 	}
 
