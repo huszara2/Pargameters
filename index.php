@@ -3,9 +3,16 @@
 <title>Pargameters</title>
 </head>
 <body>
-<form action="submit.php" method="post">
-<input type="text" name="customerName" value="Default text here" />
-<input type="submit" name="submit_button" value="Press to Submit" />
+<form action="results.php" method="post">
+<input type="text" name="genre" value="Genre" />
+
+<input type="CHECKBOX" name="type_Video" checked>Video Game
+<input type="CHECKBOX" name="type_TT" checked>Tabletop
+<input type="text" name="minAge" value="Minimum Age" />
+<input type="text" name="maxAge" value="Maximum Age" />
+<input type="CHECKBOX" name="eighteenPlus" checked>18+
+
+<input type="submit" name="submit_button" value="Find a game!" />
 
 </form>
 
