@@ -17,7 +17,8 @@
 	
 	$list->rewind();
 	while($list->valid()) {
-		echo $list->current() . "\n";
+		echo $list->current();
+		echo "\n";
 		$list->next();
 	}
 
