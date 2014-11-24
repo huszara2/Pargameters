@@ -11,7 +11,7 @@
 	</div>
 	<div>
 		<label for "genre">Genre:</label>
-		<input type="text" id="genre"/>
+		<input type="text" name="genre"/>
 	</div>
 	<div>
 		<label for "type">Type:</label>
@@ -34,7 +34,7 @@
 	</div>
 	<div>
 		<label for "players">Players:</label>
-		<input type="text" id="players" value="4"/>
+		<input type="text" name="players" value=""/>
 	</div>
 
 	

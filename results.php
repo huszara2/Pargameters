@@ -21,7 +21,7 @@
 	<?php echo $_GET["minTime"]; ?><br>
 	<?php echo $_GET["maxTime"]; ?><br>
 	<?php echo $_GET["twoPlus"]; ?><br>
-	<?php echo $_GET["Players"]; ?><br>
+	<?php echo $_GET["players"]; ?><br>
 	
 	echo "\n";
 	
