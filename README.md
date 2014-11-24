@@ -1,2 +1,2 @@
-Pargameter
+Pargameters
 ==========
