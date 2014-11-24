@@ -20,8 +20,8 @@
 	</div>
 	<div>
 		<label for "age">Age Range:</label>
-		<input type="text" name="minAge" value="0" /> -
-		<input type="text" name="maxAge" value="" />
+		<input type="number" name="minAge" value="0" min="0" max="18"/> -
+		<input type="number" name="maxAge" value="" />
 		<input type="CHECKBOX" name="eighteenPlus" checked>18+
 		<?php echo "years";?>
 	</div>
