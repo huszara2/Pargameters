@@ -12,16 +12,16 @@
 	$list->push($gameTest2);
 	$list->push($gameTest3);
 	
-	<?php echo $_POST["genre"]; ?><br>
-	//<?php echo $_POST["type_Video"]; ?><br>
-	//<?php echo $_POST["type_TT"]; ?><br>
-	<?php echo $_POST["minAge"]; ?><br>
-	<?php echo $_POST["maxAge"]; ?><br>
-	//<?php echo $_POST["eighteenPlus"]; ?><br>
-	<?php echo $_POST["minTime"]; ?><br>
-	<?php echo $_POST["maxTime"]; ?><br>
-	//<?php echo $_POST["twoPlus"]; ?><br>
-	<?php echo $_POST["players"]; ?><br>
+	echo $_POST["genre"];
+	echo $_POST["type_Video"]; 
+	echo $_POST["type_TT"]; 
+	echo $_POST["minAge"];
+	echo $_POST["maxAge"]; 
+	echo $_POST["eighteenPlus"];
+	echo $_POST["minTime"];
+	echo $_POST["maxTime"]; 
+	echo $_POST["twoPlus"]; 
+	echo $_POST["players"];
 	
 	echo "\n";
 	
