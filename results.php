@@ -30,8 +30,8 @@
 	$currentList->rewind();
 	
 	while($currentList->valid()) {
-		if($_POST['genre']==$list->current()->getGenre())
-			echo $list->current();
+		if($_POST['genre']==($list->current())->getGenre())
+			echo $currentList->current();
 		echo "<br>\n</br>";
 		$currentList->next();
 	}
