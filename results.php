@@ -7,8 +7,8 @@
 	*/
 	$genreCheck=false;
 	$typeCheck="false";
-	int $minAgeC=NULL;
-	int $maxAgeC=NULL;
+	$minAgeC=NULL;
+	$maxAgeC=NULL;
 	
 	/* Games listed
 	*/
