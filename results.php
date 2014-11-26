@@ -7,8 +7,8 @@
 	*/
 	$genreCheck=false;
 	$typeCheck="false";
-	$minAgeC=null;
-	$maxAgeC=null;
+	int $minAgeC=null;
+	int $maxAgeC=null;
 	
 	/* Games listed
 	*/
@@ -105,7 +105,7 @@
 		$currentList1=$tempList;
 	}	
 	
-	if($maxAgeC!=null) {
+/*	if($maxAgeC!=null) {
 		$currentList1->rewind();
 		while($currentList1->valid()) {
 			if($maxAgeC>=$currentList1->current()->getMaxAge()) {
@@ -115,6 +115,7 @@
 		}
 		$currentList1=$tempList;
 	}
+*/	
 	
 	$currentList1->rewind();
 	while($currentList1->valid()) {
