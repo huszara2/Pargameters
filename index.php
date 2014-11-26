@@ -21,20 +21,20 @@
 	<div>
 		<label for "age">Age Range:</label>
 		<input type="number" name="minAge" value="0" min="0" max="18"/> -
-		<input type="number" name="maxAge" value="" />
+		<input type="number" onchange="if (this.value != '') document.getElementById('eighteenPlus').checked=false"; name="maxAge" value="" min="0" max="18" />
 		<input type="CHECKBOX" name="eighteenPlus" checked>18+
 		<?php echo "years";?>
 	</div>
 	<div>
 		<label for "time">Time:</label>
-		<input type="text" name="minTime" value="0" /> -
-		<input type="text" name="maxTime" value="" />
+		<input type="number" name="minTime" value="0" min="0" max="120"/> -
+		<input type="text" name="maxTime" value="" min="0" max="120"/>
 		<input type="CHECKBOX" name="twoPlus" checked>120+
 		<?php echo "minutes";?>
 	</div>
 	<div>
 		<label for "players">Players:</label>
-		<input type="text" name="players" value=""/>
+		<input type="number" name="players" value="" min="0"/>
 	</div>
 
 	
