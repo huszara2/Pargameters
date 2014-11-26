@@ -66,14 +66,6 @@
 		}		
 	}			
 		
-		else {
-			$ageMinC=$_POST["minAge"];
-		}
-		
-		if ($_POST["maxAge"]!=null) {
-			$ageMaxC=
-
-	
 	
 	//echo $_POST["minTime"];
 	//echo $_POST["maxTime"]; 
