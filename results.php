@@ -23,11 +23,11 @@
 		echo "we are filtering by genre";
 	}	
 	
-	if($_POST["type_Video"]!="on" || $_POST["type_typeTT"]!="on") {
-		if($_POST["type_Video"]=="on" {
+	if($_POST["type_Video"]!="on" || $_POST["type_TT"]!="on") {
+		if($_POST["type_Video"]=="on") {
 			$typeCheck="Video";
 		}
-		else if($_POST["type_TT"]=="on" {
+		else if($_POST["type_TT"]=="on") {
 			$typeCheck="TableTop";
 		}
 		else {
