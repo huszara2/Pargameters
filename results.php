@@ -27,13 +27,13 @@
 	
 	echo "\n";
 	
-	$currentList->rewind();
+	$currentList1->rewind();
 	
-	while($currentList->valid()) {
-		if($_POST['genre']==($list->current())->getGenre())
-			echo $currentList->current();
+	while($currentList1->valid()) {
+		if($_POST['genre']==($currentList1->current())->getGenre())
+			echo $currentList1->current();
 		echo "<br>\n</br>";
-		$currentList->next();
+		$currentList1->next();
 	}
 
 ?>
