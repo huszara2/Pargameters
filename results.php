@@ -45,6 +45,28 @@
 		echo "we are filtering by type: $typeCheck <br/>";
 	}
 	
+	if($_POST["minAge"]!=0 || $_POST["maxAge"]!=17 || $_POST["eighteenPlus"]!="on") {
+		if($_POST["minAge"]==NULL && $_POST["maxAge"]==NULL && $_POST["eighteenPlus"]=="on") {
+			$ageMinC=18;
+		}
+		else if($_POST["minAge"]<=$_POST["maxAge"] && $_POST["eighteenPlus"]!="on") {
+			$ageMinC=$_POST["minAge"];
+			$ageMaxC=$_POST["maxAge"];
+		}
+		else if($_POST["minAge"]==$_POST["maxAge"] && $_POST["eighteenPlus"]=="on") {
+			if($_POST["minAge"]==17) {
+				$ageMinC=17;
+			}
+			else {
+				echo "Please alter your Age Range filter. Try unchecking 18+";
+			}
+		}
+		else {
+			echo "Please alter your Age Range filter."
+		}		
+	}			
+		
+	
 	//echo $_POST["minTime"];
 	//echo $_POST["maxTime"]; 
 	//echo $_POST["twoPlus"]; 
@@ -72,7 +94,7 @@
 		$currentList1=$tempList;
 	}	
 	
-/*	if($minAgeC!=NULL && $minAgeC!=0) {
+	if($minAgeC!=NULL && $minAgeC!=0) {
 		$currentList1->rewind();
 		while($currentList1->valid()) {
 			if($minAgeC<=$currentList1->current()->getMinAge()) {
@@ -82,8 +104,8 @@
 		}
 		$currentList1=$tempList;
 	}	
-*/	
-/*	if($maxAgeC!=NULL) {
+	
+	if($maxAgeC!=NULL) {
 		$currentList1->rewind();
 		while($currentList1->valid()) {
 			if($maxAgeC>=$currentList1->current()->getMaxAge()) {
@@ -93,7 +115,7 @@
 		}
 		$currentList1=$tempList;
 	}
-*/	
+	
 	
 	$currentList1->rewind();
 	while($currentList1->valid()) {
