@@ -31,7 +31,7 @@
 	
 	while($currentList1->valid()) {
 		//if($_POST['genre']==($currentList1->current())->getGenre()) {
-			echo $currentList1->current();
+			echo $currentList1->current()->getGenre();
 		//}
 		echo "<br>\n</br>";
 		$currentList1->next();
