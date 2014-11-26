@@ -72,7 +72,7 @@
 	}	
 	
 	$currentList1->rewind();
-	while($this->currentList1->valid()) {
+	while($currentList1->valid()) {
 		echo $currentList1->current();
 		$currentList1->next();
 	}	
