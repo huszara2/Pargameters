@@ -24,7 +24,6 @@
 		<input type="number" name="maxAge" value="" min="0" max="18" />
 		<input type="CHECKBOX" name="eighteenPlus" checked>18+
 		<?php echo "years";?>
-		<onchange="if (document.getElementById('maxAge').value != '') document.getElementById('eighteenPlus').checked = false;/>
 	</div>
 	<div>
 		<label for "time">Time:</label>

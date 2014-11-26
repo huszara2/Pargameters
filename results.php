@@ -12,6 +12,8 @@
 	$list->push($gameTest2);
 	$list->push($gameTest3);
 	
+	$currentList1=$list;
+	
 	echo $_POST["genre"];
 	echo $_POST["type_Video"]; 
 	echo $_POST["type_TT"]; 
@@ -25,11 +27,13 @@
 	
 	echo "\n";
 	
-	$list->rewind();
-	while($list->valid()) {
-		echo $list->current();
+	$currentList->rewind();
+	
+	while($currentList->valid()) {
+		if($_POST['genre']=$list->current()->getGenre())
+			echo $list->current();
 		echo "<br>\n</br>";
-		$list->next();
+		$currentList->next();
 	}
 
 ?>

@@ -30,6 +30,7 @@
 		
 		public function __construct($originalList) {
 			$this->originalList=$originalList;
+			$this->currentList=$originalList;
 		}
 		
 		public function revert() {
@@ -82,3 +83,14 @@
 			$this->maxPlayers=$maxPlayers;
 			$this->playerCheck=true;
 		}
+		
+		public function typeFilter() {
+				$this->currentList->rewind();
+				while($this->currentList->valid()) {
+					if($this->currentList->current()->
+					echo $list->current();
+					$list->next();
+				}
+	}
+	}
+?>
