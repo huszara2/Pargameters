@@ -8,19 +8,23 @@
 	
 	$gameTest1 = new Game('Dominion','Tabletop',10,100,30,50,'Deck building',2,5);
 	$gameTest2 = new Game('Superfight','Tabletop',6,100,20,40,'Storytelling',3,10);
-	$gameTest3 = new Game('MarioKart 8','Video',5,100,3,60,'Racing',1,8);
+	$gameTest3 = new Game('MarioKart 8','Video',5,100,3,60,'Racing',1,4);
+	$gameTest4 = new Game('Pandemic','Tabletop',8,100,35,55,'Co-op',2,4);
+	$gameTest5 = new Game('MarioKart: Double Dash','Video',5,100,3,60,'Racing',1,4);
 	
 	$list=new SplDoublyLinkedList();
 	$list->push($gameTest1);
 	$list->push($gameTest2);
 	$list->push($gameTest3);
+	$list->push($gameTest4);
+	$list->push($gameTest5);
 	
 	$currentList1=$list;
 	$tempList=new SplDoublyLinkedList();
 	
 	if($_POST["genre"]!="") {
 		$genreCheck=true;
-		echo "we are filtering by genre";
+		echo "we are filtering by genre <br/>";
 	}	
 	
 	if($_POST["type_Video"]!="on" || $_POST["type_TT"]!="on") {
@@ -28,12 +32,12 @@
 			$typeCheck="Video";
 		}
 		else if($_POST["type_TT"]=="on") {
-			$typeCheck="TableTop";
+			$typeCheck="Tabletop";
 		}
 		else {
 			$typeCheck="none";
 		}
-		echo "we are filtering by type: $typeCheck";
+		echo "we are filtering by type: $typeCheck <br/>";
 	}
 		
 	echo $_POST["minAge"];
@@ -74,6 +78,7 @@
 	$currentList1->rewind();
 	while($currentList1->valid()) {
 		echo $currentList1->current();
+		echo "<br/>";
 		$currentList1->next();
 	}	
 	
