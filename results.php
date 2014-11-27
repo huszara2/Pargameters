@@ -10,6 +10,8 @@
 	$minAgeC=NULL;
 	$maxAgeC=NULL;
 	
+	$errorMessage="";
+	
 	/* Games listed
 	*/
 	$gameTest2 = new Game('Superfight','Tabletop',6,100,20,40,'Storytelling',3,10);
@@ -48,8 +50,18 @@
 	if($_POST["minAge"]!=0) {
 		$minAgeC=$_POST["minAge"];
 		echo "we are filtering by minimum age: $minAgeC <br/>";
-	}		
-		
+	}
+	
+	if($_POST["maxAge"]<=17 && $_POST["eighteenPlus"]!="on") { //if we set a maxAge less than 17, and eighteen plus isn't on
+		$maxAgeC=$_POST["maxAge"];
+		echo "we are filtering by maximum age: $maxAgeC <br/>";
+	}
+	else if($_POST["eighteenPlus"]="on") { //in this case, we leave maxAgeC NULL because we do not care to sort by maxAge
+		if($POST_["maxAge"]<17) {
+			$errorMessage="The range of ages you selected has a gap. Try unchecking 18+";
+			echo $errorMessage;
+		}
+	}
 	
 	//echo $_POST["minTime"];
 	//echo $_POST["maxTime"]; 
