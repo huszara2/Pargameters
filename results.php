@@ -14,17 +14,19 @@
 	
 	/* Games listed
 	*/
-	$gameTest2 = new Game('Superfight','Tabletop',6,100,20,40,'Storytelling',3,10);
-	$gameTest3 = new Game('MarioKart 8','Video',5,100,3,60,'Racing',1,4);
-	$gameTest4 = new Game('Pandemic','Tabletop',8,100,35,55,'Co-op',2,4);
-	$gameTest5 = new Game('MarioKart: Double Dash','Video',5,100,3,60,'Racing',1,4);
-	
 	$list=new SplDoublyLinkedList();
 	$list->push(new Game('Dominion','Tabletop',10,100,30,50,'Deck building',2,5));
-	$list->push($gameTest2);
-	$list->push($gameTest3);
-	$list->push($gameTest4);
-	$list->push($gameTest5);
+	$list->push(new Game('Superfight','Tabletop',6,100,20,40,'Storytelling',3,10));
+	$list->push(new Game('MarioKart 8','Video',5,100,3,60,'Racing',1,4));
+	$list->push(new Game('Pandemic','Tabletop',8,100,35,55,'Co-op',2,4));
+	$list->push(new Game('MarioKart: Double Dash','Video',5,100,3,60,'Racing',1,4));
+	$list->push(new Game('Candy Land','Tabletop',3,6,20,35,'Racing',2,4));
+	$list->push(new Game('Clue','Tabletop',8,100,35,55,'Deduction',3,6));
+	$list->push(new Game('Love Letter','Tabletop',10,100,15,25,'Deduction',2,4));
+	$list->push(new Game('Dweebies','Tabletop',5,14,15,25,'Deduction',2,4));	
+	$list->push(new Game('The Game of Life','Tabletop',6,12,50,70,'Economic',2,6));
+	$list->push(new Game('Mouse Trap','Tabletop',5,10,25,35,'',2,4));
+
 	
 	$currentList1=$list;
 	$tempList=new SplDoublyLinkedList();
@@ -65,10 +67,7 @@
 		echo "we are filtering by minimum age: 18 </br>";
 	}
 	
-	//echo $_POST["minTime"];
-	//echo $_POST["maxTime"]; 
-	//echo $_POST["twoPlus"]; 
-	//echo $_POST["players"];
+
 	
 	if($genreCheck==true) {
 		$currentList1->rewind();
