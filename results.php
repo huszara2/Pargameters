@@ -52,13 +52,17 @@
 		echo "we are filtering by minimum age: $minAgeC <br/>";
 	}
 	
-	if($_POST["maxAge"]<=17 && $_POST["eighteenPlus"]!="on") { //if we set a maxAge less than 17, and eighteen plus isn't on
+	if($_POST["maxAge"]<=17 && $_POST["eighteenPlus"]!="on" && $_POST["maxAge"]!=NULL) { //if we set a maxAge less than 17, and eighteen plus isn't on
 		$maxAgeC=$_POST["maxAge"];
 		echo "we are filtering by maximum age: $maxAgeC <br/>";
 	}
 	else if($_POST["eighteenPlus"]=="on" && $_POST["maxAge"]!=17 && $_POST["maxAge"]!=NULL) { //in this case, we leave maxAgeC NULL because we do not care to sort by maxAge
-			$errorMessage= $errorMessage . "The range of ages you selected has a gap. Try unchecking 18+";
-			echo $errorMessage;
+		$errorMessage= $errorMessage . "The range of ages you selected has a gap. Try unchecking 18+ <br/>";
+		echo $errorMessage;
+	}
+	else if($_POST["eighteenPlus"]=="on" && $_POST["maxAge"]==NULL && $_POST["minAge"]!=NULL) { //if everything but 18+ is blank, we only want to search 18+
+		$minAgeC=18;
+		echo "we are filtering by minimum age: 18";
 	}
 	
 	//echo $_POST["minTime"];
