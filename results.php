@@ -89,6 +89,7 @@
 			$currentList1->next();
 		}
 		$currentList1=$tempList;
+		$tempList=NULL;
 	}	
 	
 	if($minAgeC!=NULL && $minAgeC!=0) {
@@ -100,6 +101,7 @@
 			$currentList1->next();
 		}
 		$currentList1=$tempList;
+		$tempList=NULL;
 	}	
 	
 	if($maxAgeC!=NULL) {
@@ -111,6 +113,7 @@
 			$currentList1->next();
 		}
 		$currentList1=$tempList;
+		$tempList=NULL;
 	}
 	
 	
