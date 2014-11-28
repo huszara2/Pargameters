@@ -62,7 +62,7 @@
 	}
 	else if($_POST["eighteenPlus"]=="on" && $_POST["maxAge"]==NULL && $_POST["minAge"]==NULL) { //if everything but 18+ is blank, we only want to search 18+
 		$minAgeC=18;
-		echo "we are filtering by minimum age: 18";
+		echo "we are filtering by minimum age: 18 </br>";
 	}
 	
 	//echo $_POST["minTime"];
@@ -92,7 +92,7 @@
 		$currentList1=$tempList;
 	}	
 	
-/*	if($minAgeC!=NULL && $minAgeC!=0) {
+	if($minAgeC!=NULL && $minAgeC!=0) {
 		$currentList1->rewind();
 		while($currentList1->valid()) {
 			if($minAgeC<=$currentList1->current()->getMinAge()) {
@@ -113,7 +113,7 @@
 		}
 		$currentList1=$tempList;
 	}
-*/	
+	
 	
 	$currentList1->rewind();
 	while($currentList1->valid()) {
