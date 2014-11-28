@@ -56,7 +56,7 @@
 		$maxAgeC=$_POST["maxAge"];
 		echo "we are filtering by maximum age: $maxAgeC <br/>";
 	}
-	else if($_POST["eighteenPlus"]="on") { //in this case, we leave maxAgeC NULL because we do not care to sort by maxAge
+	else if($_POST["eighteenPlus"]=="on") { //in this case, we leave maxAgeC NULL because we do not care to sort by maxAge
 		if($POST_["maxAge"]<=16) {
 			$errorMessage="The range of ages you selected has a gap. Try unchecking 18+";
 			echo $errorMessage;
