@@ -52,11 +52,7 @@
 		echo "we are filtering by minimum age: $minAgeC <br/>";
 	}
 	
-	if($_POST["minAge"]>$POST_["maxAge"]) {
-		$errorMessage=$errorMessage . "Please make sure the minimum age is less than the maximum age.";
-		echo $errorMessage;
-	}
-	else if($_POST["maxAge"]<=17 && $_POST["eighteenPlus"]!="on") { //if we set a maxAge less than 17, and eighteen plus isn't on
+	if($_POST["maxAge"]<=17 && $_POST["eighteenPlus"]!="on") { //if we set a maxAge less than 17, and eighteen plus isn't on
 		$maxAgeC=$_POST["maxAge"];
 		echo "we are filtering by maximum age: $maxAgeC <br/>";
 	}
