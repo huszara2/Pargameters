@@ -60,7 +60,7 @@
 		$errorMessage= $errorMessage . "The range of ages you selected has a gap. Try unchecking 18+ <br/>";
 		echo $errorMessage;
 	}
-	else if($_POST["eighteenPlus"]=="on" && $_POST["maxAge"]==NULL && $_POST["minAge"]!=NULL) { //if everything but 18+ is blank, we only want to search 18+
+	else if($_POST["eighteenPlus"]=="on" && $_POST["maxAge"]==NULL && $_POST["minAge"]==NULL) { //if everything but 18+ is blank, we only want to search 18+
 		$minAgeC=18;
 		echo "we are filtering by minimum age: 18";
 	}
