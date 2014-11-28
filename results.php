@@ -95,7 +95,7 @@
 	if($minAgeC!=NULL && $minAgeC!=0) {
 		$currentList1->rewind();
 		while($currentList1->valid()) {
-			if($minAgeC>=$currentList1->current()->getMaxAge()) {
+			if($minAgeC<=$currentList1->current()->getMaxAge()) {
 				$tempList->push($currentList1->current());
 			}
 			$currentList1->next();
@@ -106,7 +106,7 @@
 	if($maxAgeC!=NULL) {
 		$currentList1->rewind();
 		while($currentList1->valid()) {
-			if($maxAgeC<=$currentList1->current()->getMinAge()) {
+			if($maxAgeC>=$currentList1->current()->getMinAge()) {
 				$tempList->push($currentList1->current());
 			}
 			$currentList1->next();
