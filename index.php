@@ -27,8 +27,8 @@
 	</div>
 	<div>
 		<label for "time">Time:</label>
-		<input type="number" name="minTime" value="0" min="0" max="120"/> -
-		<input type="text" name="maxTime" value="119" min="0" max="120"/>
+		<input type="number" name="minTime" value="0" min="0" max="119"/> -
+		<input type="number" name="maxTime" value="119" min="0" max="119"/>
 		<input type="CHECKBOX" name="twoPlus" checked>120+
 		<?php echo "minutes";?>
 	</div>

@@ -11,6 +11,7 @@
 	$maxAgeC=NULL;
 	$minTimeC=NULL;
 	$maxTimeC=NULL;
+	$playerCheck=NULL;
 	
 	$errorMessage="";
 	
@@ -87,7 +88,8 @@
 		echo "we are filtering by minimum time: 120 </br>";
 	}
 	
-	if($genreCheck==true) { //works
+	//Filter by genre
+	if($genreCheck==true) {
 		$tempList=new SplDoublyLinkedList();
 		$currentList1->rewind();
 		while($currentList1->valid()) {
@@ -99,7 +101,8 @@
 		$currentList1=$tempList;
 	}
 	
-	if($typeCheck!="false") { //works
+	//Filter by type
+	if($typeCheck!="false") {
 		$tempList=new SplDoublyLinkedList();
 		$currentList1->rewind();
 		while($currentList1->valid()) {
@@ -111,7 +114,8 @@
 		$currentList1=$tempList;
 	}	
 	
-	if($minAgeC!=NULL && $minAgeC!=0) { //works
+	//Filter by minimum age
+	if($minAgeC!=NULL && $minAgeC!=0) {
 		$tempList=new SplDoublyLinkedList();
 		$currentList1->rewind();
 		echo "We should be filtering by minimum age...</br>";
@@ -124,7 +128,8 @@
 		$currentList1=$tempList;
 	}	
 	
-	if($maxAgeC!=NULL) { //works
+	//filter by maximum age
+	if($maxAgeC!=NULL) {
 		$tempList=new SplDoublyLinkedList();
 		$currentList1->rewind();
 		echo "We should be filtering by maximum age...</br>";
@@ -137,6 +142,7 @@
 		$currentList1=$tempList;
 	}
 	
+	//Filter by minimum time
 	if($minTimeC!=NULL && $minTimeC!=0) { 
 		$tempList=new SplDoublyLinkedList();
 		$currentList1->rewind();
@@ -150,6 +156,7 @@
 		$currentList1=$tempList;
 	}	
 	
+	//Filter by maximum time
 	if($maxTimeC!=NULL) { 
 		$tempList=new SplDoublyLinkedList();
 		$currentList1->rewind();
@@ -163,6 +170,20 @@
 		$currentList1=$tempList;
 	}	
 	
+	//Filter by players
+	if($playerCheck!=NULL) {
+		$tempList=new SplDoublyLinkedList();
+		$currentList1->rewind();
+		while($currentList1->valid()) {
+			if($_POST["players"]>=$currentList1->current()->getMinPlayers() && $_POST["players"]<=$currentList1->current()->getMaxPlayers()) {
+				$tempList->push($currentList1->current());
+			}
+			$currentList1->next();
+		}
+		$currentList1=$tempList;
+	}
+	
+	//Final Results!
 	$currentList1->rewind();
 	while($currentList1->valid()) {
 		echo $currentList1->current();
