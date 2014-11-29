@@ -34,7 +34,7 @@
 	</div>
 	<div>
 		<label for "players">Players:</label>
-		<input type="number" name="players" value="" min="0"/>
+		<input type="number" name="players" value="" min="1"/>
 	</div>
 
 	

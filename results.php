@@ -170,7 +170,7 @@
 	}	
 	
 	//Filter by players
-	if($_POST["players"]!=NULL) {
+	if($_POST["players"]!=0) {
 		$tempList=new SplDoublyLinkedList();
 		$currentList1->rewind();
 		while($currentList1->valid()) {
