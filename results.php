@@ -175,7 +175,7 @@
 		$tempList=new SplDoublyLinkedList();
 		$currentList1->rewind();
 		while($currentList1->valid()) {
-			if($_POST["players"]>=($currentList1->current())->getMinPlayers() && $_POST["players"]<=($currentList1->current())->getMaxPlayers()) {
+			if($_POST["players"]>=$currentList1->current()->getMinPlayers() && $_POST["players"]<=$currentList1->current()->getMaxPlayers()) {
 				$tempList->push($currentList1->current());
 			}
 			$currentList1->next();
