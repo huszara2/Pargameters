@@ -181,7 +181,7 @@
 		$tempList=new SplDoublyLinkedList();
 		$currentList1->rewind();
 		while($currentList1->valid()) {
-			if($playerCheck>=$currentList1->current()->getMinPlayers() && $playerCheck<=$currentList1->current()->getMaxPlayers()) {
+			if($playerCheck>=$currentList1->current()->getMinPlayers()) {
 				$tempList->push($currentList1->current());
 			}
 			$currentList1->next();
