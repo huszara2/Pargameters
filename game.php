@@ -101,7 +101,7 @@
 		}
 		
 		public function getMinPlayers() {
-			return $this->minAge;
+			return $this->minPlayers;
 		}
 		
 		public function setMinPlayers($newMin) {
