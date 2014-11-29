@@ -15,6 +15,8 @@
 	
 	$errorMessage="";
 	
+	$list=new SplDoublyLinkedList();
+	
 	$row = 1;
 	if (($handle = fopen("user1.csv", "r")) !== FALSE) {
 		while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
@@ -27,7 +29,7 @@
 	
 	/* Games listed
 	*/
-	$list=new SplDoublyLinkedList();
+
 	$list->push(new Game('Dominion','Tabletop',10,100,30,50,'Deck building',2,5));
 	$list->push(new Game('Superfight','Tabletop',6,100,20,40,'Storytelling',3,10));
 	$list->push(new Game('MarioKart 8','Video',5,100,3,60,'Racing',1,4));
