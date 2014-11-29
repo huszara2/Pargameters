@@ -116,8 +116,17 @@
 			$this->maxPlayers=$newMax;
 		}
 		
+		public function playerRange() {
+			if($this->maxPlayers==$this->minPlayers) {
+				return $this->minPlayers;
+			}
+			else {
+				return $this->minPlayers . "-" . $this->maxPlayers;
+			}
+		}
+		
 		public function __toString() {
-				return $this->title . ", " . $this->type . ", " . $this->ageRange() . " years, " . $this->minTime . "-" . $this->maxTime . " minutes, " . $this->genre . ", " . $this->minPlayers . "-" . $this->maxPlayers . " players.";
+				return $this->title . ", " . $this->type . ", " . $this->ageRange() . " years, " . $this->minTime . "-" . $this->maxTime . " minutes, " . $this->genre . ", " . $this->minPlayers . "-" . $this->playerRange() . " players.";
 		}
 		
 		
