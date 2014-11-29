@@ -9,6 +9,8 @@
 	$typeCheck="false";
 	$minAgeC=NULL;
 	$maxAgeC=NULL;
+	$minTimeC=NULL;
+	$maxTimeC=NULL;
 	
 	$errorMessage="";
 	
@@ -67,9 +69,25 @@
 		echo "we are filtering by minimum age: 18 </br>";
 	}
 	
-
+	if($_POST["minTime"]!=0) {
+		$minAgeC=$_POST["minTime"];
+		echo "we are filtering by minimum time: $minTimeC <br/>";
+	}
 	
-	if($genreCheck==true) {
+	if($_POST["maxTime"]<=17 && $_POST["twoPlus"]!="on" && $_POST["maxTime"]!=NULL) { //if we set a maxTime less than 120, and 120 plus isn't on
+		$maxTimeC=$_POST["maxTime"];
+		echo "we are filtering by maximum age: $maxTimeC <br/>";
+	}
+	else if($_POST["twoPlus"]=="on" && $_POST["maxTime"]!=17 && $_POST["maxTime"]!=NULL) { //in this case, we leave maxTimeC NULL because we do not care to sort by maxTime
+		$errorMessage= $errorMessage . "The range of time you selected has a gap. Try unchecking 120+ <br/>";
+		echo $errorMessage;
+	}
+	else if($_POST["twoPlus"]=="on" && $_POST["maxTime"]==NULL && $_POST["minTime"]==NULL) { //if everything but 120+ is blank, we only want to search 120+
+		$minTimeC=120;
+		echo "we are filtering by minimum time: 120 </br>";
+	}
+	
+	if($genreCheck==true) { //works
 		$tempList=new SplDoublyLinkedList();
 		$currentList1->rewind();
 		while($currentList1->valid()) {
@@ -81,7 +99,7 @@
 		$currentList1=$tempList;
 	}
 	
-	if($typeCheck!="false") {
+	if($typeCheck!="false") { //works
 		$tempList=new SplDoublyLinkedList();
 		$currentList1->rewind();
 		while($currentList1->valid()) {
@@ -93,7 +111,7 @@
 		$currentList1=$tempList;
 	}	
 	
-	if($minAgeC!=NULL && $minAgeC!=0) {
+	if($minAgeC!=NULL && $minAgeC!=0) { //works
 		$tempList=new SplDoublyLinkedList();
 		$currentList1->rewind();
 		echo "We should be filtering by minimum age...</br>";
@@ -106,7 +124,7 @@
 		$currentList1=$tempList;
 	}	
 	
-	if($maxAgeC!=NULL) {
+	if($maxAgeC!=NULL) { //works
 		$tempList=new SplDoublyLinkedList();
 		$currentList1->rewind();
 		echo "We should be filtering by maximum age...</br>";
@@ -119,6 +137,31 @@
 		$currentList1=$tempList;
 	}
 	
+	if($minTimeC!=NULL && $minTimeC!=0) { 
+		$tempList=new SplDoublyLinkedList();
+		$currentList1->rewind();
+		echo "We should be filtering by minimum time...</br>";
+		while($currentList1->valid()) {
+			if($minTimeC<=$currentList1->current()->getMaxTime()) {
+				$tempList->push($currentList1->current());
+			}
+			$currentList1->next();
+		}
+		$currentList1=$tempList;
+	}	
+	
+	if($maxTimeC!=NULL) { 
+		$tempList=new SplDoublyLinkedList();
+		$currentList1->rewind();
+		echo "We should be filtering by maximum time...</br>";
+		while($currentList1->valid()) {
+			if($maxTimeC>=$currentList1->current()->getMinTime()) {
+				$tempList->push($currentList1->current());
+			}
+			$currentList1->next();
+		}
+		$currentList1=$tempList;
+	}	
 	
 	$currentList1->rewind();
 	while($currentList1->valid()) {
