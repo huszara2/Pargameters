@@ -29,7 +29,7 @@
 
 	
 	$currentList1=$list;
-	$tempList=new SplDoublyLinkedList();
+
 	
 	if($_POST["genre"]!="") {
 		$genreCheck=true;
@@ -70,6 +70,7 @@
 
 	
 	if($genreCheck==true) {
+		$tempList=new SplDoublyLinkedList();
 		$currentList1->rewind();
 		while($currentList1->valid()) {
 			if($_POST["genre"]==$currentList1->current()->getGenre()) {
@@ -81,6 +82,7 @@
 	}
 	
 	if($typeCheck!="false") {
+		$tempList=new SplDoublyLinkedList();
 		$currentList1->rewind();
 		while($currentList1->valid()) {
 			if($typeCheck==$currentList1->current()->getType()) {
@@ -89,10 +91,10 @@
 			$currentList1->next();
 		}
 		$currentList1=$tempList;
-		$tempList=NULL;
 	}	
 	
 	if($minAgeC!=NULL && $minAgeC!=0) {
+		$tempList=new SplDoublyLinkedList();
 		$currentList1->rewind();
 		echo "We should be filtering by minimum age...</br>";
 		while($currentList1->valid()) {
@@ -102,10 +104,10 @@
 			$currentList1->next();
 		}
 		$currentList1=$tempList;
-		$tempList=NULL;
 	}	
 	
 	if($maxAgeC!=NULL) {
+		$tempList=new SplDoublyLinkedList();
 		$currentList1->rewind();
 		echo "We should be filtering by maximum age...</br>";
 		while($currentList1->valid()) {
@@ -115,7 +117,6 @@
 			$currentList1->next();
 		}
 		$currentList1=$tempList;
-		$tempList=NULL;
 	}
 	
 	
