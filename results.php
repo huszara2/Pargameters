@@ -94,6 +94,7 @@
 	
 	if($minAgeC!=NULL && $minAgeC!=0) {
 		$currentList1->rewind();
+		echo "We should be filtering by minimum age...</br>";
 		while($currentList1->valid()) {
 			if($minAgeC<=$currentList1->current()->getMaxAge()) {
 				$tempList->push($currentList1->current());
@@ -106,6 +107,7 @@
 	
 	if($maxAgeC!=NULL) {
 		$currentList1->rewind();
+		echo "We should be filtering by maximum age...</br>";
 		while($currentList1->valid()) {
 			if($maxAgeC>=$currentList1->current()->getMinAge()) {
 				$tempList->push($currentList1->current());
