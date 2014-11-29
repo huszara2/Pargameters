@@ -76,7 +76,7 @@
 	
 	if($_POST["maxTime"]<=119 && $_POST["twoPlus"]!="on" && $_POST["maxTime"]!=NULL) { //if we set a maxTime less than 120, and 120 plus isn't on
 		$maxTimeC=$_POST["maxTime"];
-		echo "we are filtering by maximum age: $maxTimeC <br/>";
+		echo "we are filtering by maximum time: $maxTimeC <br/>";
 	}
 	else if($_POST["twoPlus"]=="on" && $_POST["maxTime"]!=119 && $_POST["maxTime"]!=NULL) { //in this case, we leave maxTimeC NULL because we do not care to sort by maxTime
 		$errorMessage= $errorMessage . "The range of time you selected has a gap. Try unchecking 120+ <br/>";
