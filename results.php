@@ -29,7 +29,7 @@
 	$list->push(new Game('Dweebies','Tabletop',5,14,15,25,'Deduction',2,4));	
 	$list->push(new Game('The Game of Life','Tabletop',6,12,50,70,'Economic',2,6));
 	$list->push(new Game('Mouse Trap','Tabletop',5,10,25,35,'',2,4));
-
+	$list->push(new Game('Android Netrunner','Tabletop',14,100,35,55,'Living Card Game',2,2));
 	
 	$currentList1=$list;
 
@@ -86,6 +86,10 @@
 	else if($_POST["twoPlus"]=="on" && $_POST["maxTime"]==NULL && $_POST["minTime"]==NULL) { //if everything but 120+ is blank, we only want to search 120+
 		$minTimeC=120;
 		echo "we are filtering by minimum time: 120 </br>";
+	}
+	
+	if($_POST["players"]!=NULL) {
+		$playerCheck=$_POST["players"];
 	}
 	
 	//Filter by genre
@@ -175,7 +179,7 @@
 		$tempList=new SplDoublyLinkedList();
 		$currentList1->rewind();
 		while($currentList1->valid()) {
-			if($_POST["players"]>=$currentList1->current()->getMinPlayers() && $_POST["players"]<=$currentList1->current()->getMaxPlayers()) {
+			if($playerCheck>=$currentList1->current()->getMinPlayers() && playerCheck<=$currentList1->current()->getMaxPlayers()) {
 				$tempList->push($currentList1->current());
 			}
 			$currentList1->next();
