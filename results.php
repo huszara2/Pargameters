@@ -11,6 +11,7 @@
 	$maxAgeC=NULL;
 	$minTimeC=NULL;
 	$maxTimeC=NULL;
+	$playerCheck=0;
 	
 	$errorMessage="";
 	
@@ -87,6 +88,11 @@
 		echo "we are filtering by minimum time: 120 </br>";
 	}
 		
+	if($_POST["players"]!=NULL) {
+		$playerCheck=$_POST["players"];
+		echo "we are filtering by players: $playerCheck <br/>";
+	}
+	
 	//Filter by genre
 	if($genreCheck==true) {
 		$tempList=new SplDoublyLinkedList();
@@ -170,12 +176,12 @@
 	}	
 	
 	//Filter by players
-	if($_POST["players"]!=NULL) {
+	if($playerCheck!=0) {
 		echo "We should be filtering by players...</br>";
 		$tempList=new SplDoublyLinkedList();
 		$currentList1->rewind();
 		while($currentList1->valid()) {
-			if($_POST["players"]>=$currentList1->current()->getMinPlayers() && $_POST["players"]<=$currentList1->current()->getMaxPlayers()) {
+			if($playerCheck>=$currentList1->current()->getMinPlayers() && $playerCheck<=$currentList1->current()->getMaxPlayers()) {
 				$tempList->push($currentList1->current());
 			}
 			$currentList1->next();
