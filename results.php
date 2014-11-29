@@ -70,7 +70,7 @@
 	}
 	
 	if($_POST["minTime"]!=0) {
-		$minAgeC=$_POST["minTime"];
+		$minTimeC=$_POST["minTime"];
 		echo "we are filtering by minimum time: $minTimeC <br/>";
 	}
 	
