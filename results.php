@@ -170,11 +170,12 @@
 	}	
 	
 	//Filter by players
-	if($_POST["players"]!=0) {
+	if($_POST["players"]!=NULL) {
+		echo "We should be filtering by players...</br>";
 		$tempList=new SplDoublyLinkedList();
 		$currentList1->rewind();
 		while($currentList1->valid()) {
-			if($_POST["players"]>=$currentList1->current()->getMinPlayers() && $_POST["players"]<=$currentList1->current()->getMaxPlayers()) {
+			if($_POST["players"]>=($currentList1->current())->getMinPlayers() && $_POST["players"]<=($currentList1->current())->getMaxPlayers()) {
 				$tempList->push($currentList1->current());
 			}
 			$currentList1->next();
