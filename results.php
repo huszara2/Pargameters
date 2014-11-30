@@ -1,3 +1,7 @@
+<head>
+<link rel="stylesheet" type="text/css" href="style.css">
+<title>Pargameters</title>
+</head>
 <body>
 <?php include_once("game.php");?>
 		
