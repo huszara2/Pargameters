@@ -1,8 +1,8 @@
-<body>
 <head>
 <link rel="stylesheet" type="text/css" href="style.css">
-<title>Pargameters</title>
+<title>Pargameters Results</title>
 </head>
+<body>
 <?php include_once("game.php");?>
 		
 <?php
