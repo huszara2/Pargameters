@@ -1,5 +1,6 @@
 <body>
 <head>
+<link rel="stylesheet" type="text/css" href="style.css">
 <title>Pargameters</title>
 </head>
 <body>

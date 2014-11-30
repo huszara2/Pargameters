@@ -1,23 +1,29 @@
 <body>
+<head>
+<link rel="stylesheet" type="text/css" href="style.css">
+<title>Pargameters</title>
+</head>
 <?php include_once("game.php");?>
 		
 <?php
 	
 	/* Booleans/Strings for checking each search parameter
 	*/
-	$genreCheck=false;
-	$typeCheck="false";
-	$minAgeC=NULL;
-	$maxAgeC=NULL;
-	$minTimeC=NULL;
-	$maxTimeC=NULL;
-	$playerCheck=0;
+	private $genreCheck=false;
+	private $typeCheck="false";
+	private $minAgeC=NULL;
+	private $maxAgeC=NULL;
+	private $minTimeC=NULL;
+	private $maxTimeC=NULL;
+	private $playerCheck=0;
 	
-	$errorMessage="";
+	private $errorMessage="";
 	
-	$list=new SplDoublyLinkedList();
+	private $list=new SplDoublyLinkedList();
+	private $list2=new SplDoublyLinkedList();
 	
-	$row = 1;
+	private $row = 1;
+	
 	if (($handle = fopen("user1.csv", "r")) !== FALSE) {
 		while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
 			$num = count($data);
@@ -27,15 +33,23 @@
 		fclose($handle);
 	}	
 	
+	$row = 1;
+	if (($handle = fopen("user2.csv", "r")) !== FALSE) {
+		while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+			$num = count($data);
+			$row++;
+			$list2->push(new Game($data[0],$data[1],$data[2],$data[3],$data[4],$data[5],$data[6],$data[7],$data[8]));
+		}
+		fclose($handle);
+	}	
+	
 	/* Games listed
 	*/
-
 	$list->push(new Game('MarioKart 8','Video',5,100,3,60,'Racing',1,4));
-	$list->push(new Game('Pandemic','Tabletop',8,100,35,55,'Co-op',2,4));
 	$list->push(new Game('MarioKart: Double Dash','Video',5,100,3,60,'Racing',1,4));
 
 	
-	$currentList1=$list;
+	private $currentList1=$list;
 
 	
 	if($_POST["genre"]!="") {
@@ -88,104 +102,111 @@
 		$playerCheck=$_POST["players"];
 	}
 	
-	//Filter by genre
-	if($genreCheck==true) {
-		$tempList=new SplDoublyLinkedList();
+	if($errorMessage=="") {
+		//Filter by genre
+		if($genreCheck==true) {
+			$tempList=new SplDoublyLinkedList();
+			$currentList1->rewind();
+			while($currentList1->valid()) {
+				if($_POST["genre"]==$currentList1->current()->getGenre()) {
+					$tempList->push($currentList1->current());
+				}
+				$currentList1->next();
+			}
+			$currentList1=$tempList;
+		}
+		
+		//Filter by type
+		if($typeCheck!="false") {
+			$tempList=new SplDoublyLinkedList();
+			$currentList1->rewind();
+			while($currentList1->valid()) {
+				if($typeCheck==$currentList1->current()->getType()) {
+					$tempList->push($currentList1->current());
+				}
+				$currentList1->next();
+			}
+			$currentList1=$tempList;
+		}	
+		
+		//Filter by minimum age
+		if($minAgeC!=NULL && $minAgeC!=0) {
+			$tempList=new SplDoublyLinkedList();
+			$currentList1->rewind();
+			while($currentList1->valid()) {
+				if($minAgeC<=$currentList1->current()->getMaxAge()) {
+					$tempList->push($currentList1->current());
+				}
+				$currentList1->next();
+			}
+			$currentList1=$tempList;
+		}	
+		
+		//filter by maximum age
+		if($maxAgeC!=NULL) {
+			$tempList=new SplDoublyLinkedList();
+			$currentList1->rewind();
+			while($currentList1->valid()) {
+				if($maxAgeC>=$currentList1->current()->getMinAge()) {
+					$tempList->push($currentList1->current());
+				}
+				$currentList1->next();
+			}
+			$currentList1=$tempList;
+		}
+		
+		//Filter by minimum time
+		if($minTimeC!=NULL && $minTimeC!=0) { 
+			$tempList=new SplDoublyLinkedList();
+			$currentList1->rewind();
+			while($currentList1->valid()) {
+				if($minTimeC<=$currentList1->current()->getMaxTime()) {
+					$tempList->push($currentList1->current());
+				}
+				$currentList1->next();
+			}
+			$currentList1=$tempList;
+		}	
+		
+		//Filter by maximum time
+		if($maxTimeC!=NULL) { 
+			$tempList=new SplDoublyLinkedList();
+			$currentList1->rewind();
+			while($currentList1->valid()) {
+				if($maxTimeC>=$currentList1->current()->getMinTime()) {
+					$tempList->push($currentList1->current());
+				}
+				$currentList1->next();
+			}
+			$currentList1=$tempList;
+		}	
+		
+		//Filter by players
+		if($playerCheck!=0) {
+			$tempList=new SplDoublyLinkedList();
+			$currentList1->rewind();
+			while($currentList1->valid()) {
+				if($playerCheck>=$currentList1->current()->getMinPlayers() && $playerCheck<=$currentList1->current()->getMaxPlayers()) {
+					$tempList->push($currentList1->current());
+				}
+				$currentList1->next();
+			}
+			$currentList1=$tempList;
+		}
+		
+		//Final Results!
+		echo "In your collection: <br/>";
 		$currentList1->rewind();
 		while($currentList1->valid()) {
-			if($_POST["genre"]==$currentList1->current()->getGenre()) {
-				$tempList->push($currentList1->current());
-			}
+			echo $currentList1->current();
+			echo "<br/>";
 			$currentList1->next();
-		}
-		$currentList1=$tempList;
+		}	
+		echo "In others' collections: <br/>";
 	}
-	
-	//Filter by type
-	if($typeCheck!="false") {
-		$tempList=new SplDoublyLinkedList();
-		$currentList1->rewind();
-		while($currentList1->valid()) {
-			if($typeCheck==$currentList1->current()->getType()) {
-				$tempList->push($currentList1->current());
-			}
-			$currentList1->next();
-		}
-		$currentList1=$tempList;
-	}	
-	
-	//Filter by minimum age
-	if($minAgeC!=NULL && $minAgeC!=0) {
-		$tempList=new SplDoublyLinkedList();
-		$currentList1->rewind();
-		while($currentList1->valid()) {
-			if($minAgeC<=$currentList1->current()->getMaxAge()) {
-				$tempList->push($currentList1->current());
-			}
-			$currentList1->next();
-		}
-		$currentList1=$tempList;
-	}	
-	
-	//filter by maximum age
-	if($maxAgeC!=NULL) {
-		$tempList=new SplDoublyLinkedList();
-		$currentList1->rewind();
-		while($currentList1->valid()) {
-			if($maxAgeC>=$currentList1->current()->getMinAge()) {
-				$tempList->push($currentList1->current());
-			}
-			$currentList1->next();
-		}
-		$currentList1=$tempList;
+	else{
+		echo $errorMessage;
 	}
-	
-	//Filter by minimum time
-	if($minTimeC!=NULL && $minTimeC!=0) { 
-		$tempList=new SplDoublyLinkedList();
-		$currentList1->rewind();
-		while($currentList1->valid()) {
-			if($minTimeC<=$currentList1->current()->getMaxTime()) {
-				$tempList->push($currentList1->current());
-			}
-			$currentList1->next();
-		}
-		$currentList1=$tempList;
-	}	
-	
-	//Filter by maximum time
-	if($maxTimeC!=NULL) { 
-		$tempList=new SplDoublyLinkedList();
-		$currentList1->rewind();
-		while($currentList1->valid()) {
-			if($maxTimeC>=$currentList1->current()->getMinTime()) {
-				$tempList->push($currentList1->current());
-			}
-			$currentList1->next();
-		}
-		$currentList1=$tempList;
-	}	
-	
-	//Filter by players
-	if($playerCheck!=0) {
-		$tempList=new SplDoublyLinkedList();
-		$currentList1->rewind();
-		while($currentList1->valid()) {
-			if($playerCheck>=$currentList1->current()->getMinPlayers() && $playerCheck<=$currentList1->current()->getMaxPlayers()) {
-				$tempList->push($currentList1->current());
-			}
-			$currentList1->next();
-		}
-		$currentList1=$tempList;
-	}
-	
-	//Final Results!
-	$currentList1->rewind();
-	while($currentList1->valid()) {
-		echo $currentList1->current();
-		echo "<br/>";
-		$currentList1->next();
-	}	
 	
 ?>
 </body>

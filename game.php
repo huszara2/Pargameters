@@ -1,12 +1,13 @@
 <?php
-/*
- *Alana Huszar
- *CSC 415
- *Independent Project
-/*
-
-/* Games object
-*/
+// Name: Alana Huszar
+// Course: CSC 415
+// Semester: Fall 2014
+// Instructor: Dr. Pulimood 
+// Project name: Pargameters
+// Description: Returns playable games based on user given parameters
+// Filename: game.php
+// Description: object representing a game
+// Last modified on: November 30, 2014
 
 	class Game{
 		private $title;
