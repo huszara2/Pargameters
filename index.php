@@ -6,7 +6,7 @@
 <body>
 <form action="results.php" method="post">
 	<div>
-		<?php echo <b>"Pargameters</b></br>";
+		<?php echo "<b>Pargameters</b></br>";
 			echo "What would you like to play?";
 		?>
 	</div>
