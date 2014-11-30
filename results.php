@@ -5,20 +5,20 @@
 	
 	/* Booleans/Strings for checking each search parameter
 	*/
-	private $genreCheck=false;
-	private $typeCheck="false";
-	private $minAgeC=NULL;
-	private $maxAgeC=NULL;
-	private $minTimeC=NULL;
-	private $maxTimeC=NULL;
-	private $playerCheck=0;
+	 $genreCheck=false;
+	 $typeCheck="false";
+	 $minAgeC=NULL;
+	 $maxAgeC=NULL;
+	 $minTimeC=NULL;
+	 $maxTimeC=NULL;
+	 $playerCheck=0;
 	
-	private $errorMessage="";
+	 $errorMessage="";
 	
-	private $list=new SplDoublyLinkedList();
-	private $list2=new SplDoublyLinkedList();
+	 $list=new SplDoublyLinkedList();
+	 $list2=new SplDoublyLinkedList();
 	
-	private $row = 1;
+	 $row = 1;
 	if (($handle = fopen("user1.csv", "r")) !== FALSE) {
 		while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
 			$num = count($data);
@@ -44,7 +44,7 @@
 	$list->push(new Game('MarioKart: Double Dash','Video',5,100,3,60,'Racing',1,4));
 
 	
-	private $currentList1=$list;
+	 $currentList1=$list;
 
 	
 	if($_POST["genre"]!="") {
