@@ -10,7 +10,7 @@
 			echo "What would you like to play?";
 		?>
 	</div>
-	<div>
+	<div id=""centered">
 		<div id="inner">
 			<label for "genre"><b>Genre</b>:</label>
 			<input type="text" name="genre"/>

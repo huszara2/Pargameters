@@ -1,12 +1,18 @@
 body {
     background-color: D4C8FF;
-	font: Verdana;
+	font-family: Tahoma, Geneva, sans-serif;
 	text-align: center;
 	color: 4D3E7F;
 }
 
 #inner {
-	font: Verdana;
+	font-family: Tahoma, Geneva, sans-serif;
 	text-align: left;
+	color: 4D3E7F;
+}
+
+#centered {
+	font-family: Tahoma, Geneva, sans-serif;
+	text-align: center;
 	color: 4D3E7F;
 }
