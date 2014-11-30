@@ -1,7 +1,3 @@
-<head>
-<link rel="stylesheet" type="text/css" href="style.css">
-<title>Pargameters Results</title>
-</head>
 <body>
 <?php include_once("game.php");?>
 		
@@ -23,7 +19,6 @@
 	private $list2=new SplDoublyLinkedList();
 	
 	private $row = 1;
-	
 	if (($handle = fopen("user1.csv", "r")) !== FALSE) {
 		while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
 			$num = count($data);
