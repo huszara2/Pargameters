@@ -67,6 +67,10 @@
 		}
 	}
 	
+	if($_POST["minAge"]>$_POST["maxAge"]) {
+		$errorMessage= $errorMessage . "The age range you indicated should be in numerical order. <br/>";
+	}
+	
 	if($_POST["minAge"]!=0) {
 		$minAgeC=$_POST["minAge"];
 	}
@@ -76,10 +80,13 @@
 	}
 	else if($_POST["eighteenPlus"]=="on" && $_POST["maxAge"]!=17 && $_POST["maxAge"]!=NULL) { //in this case, we leave maxAgeC NULL because we do not care to sort by maxAge
 		$errorMessage= $errorMessage . "The range of ages you selected has a gap. Try unchecking 18+ <br/>";
-		echo $errorMessage;
 	}
 	else if($_POST["eighteenPlus"]=="on" && $_POST["maxAge"]==NULL && $_POST["minAge"]==NULL) { //if everything but 18+ is blank, we only want to search 18+
 		$minAgeC=18;
+	}
+	
+	if($_POST["minTime"]>$_POST["maxTime"]) {
+		$errorMessage= $errorMessage . "The time range you indicated should be in numerical order. <br/>";
 	}
 	
 	if($_POST["minTime"]!=0) {
@@ -91,7 +98,6 @@
 	}
 	else if($_POST["twoPlus"]=="on" && $_POST["maxTime"]!=119 && $_POST["maxTime"]!=NULL) { //in this case, we leave maxTimeC NULL because we do not care to sort by maxTime
 		$errorMessage= $errorMessage . "The range of time you selected has a gap. Try unchecking 120+ <br/>";
-		echo $errorMessage;
 	}
 	else if($_POST["twoPlus"]=="on" && $_POST["maxTime"]==NULL && $_POST["minTime"]==NULL) { //if everything but 120+ is blank, we only want to search 120+
 		$minTimeC=120;
@@ -194,18 +200,21 @@
 		}
 		
 		//Final Results!
-		echo "In your collection: <br/>";
+		echo "<b>In your collection:</b> <br/>";
 		$currentList1->rewind();
 		while($currentList1->valid()) {
 			echo $currentList1->current();
 			echo "<br/>";
 			$currentList1->next();
 		}	
-		echo "In others' collections: <br/>";
+		echo "</br><b>In others' collections:</b> <br/>";
 	}
 	else{
 		echo $errorMessage;
 	}
 	
 ?>
+<form>
+<input type="button" value="Back" onClick="history.back()">
+</form>
 </body>
