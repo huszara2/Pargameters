@@ -4,7 +4,13 @@
 </head>
 <body>
 <?php include_once("game.php");?>
-		
+<div>
+	<?php echo "<b>Pargameters</b></br>";
+		echo "What would you like to play?</br>";
+	?>
+</div>
+
+<div class="centered">		
 <?php
 	
 	/* Booleans/Strings for checking each search parameter
@@ -341,6 +347,8 @@
 	}
 	
 ?>
+</div>
+
 <form>
 <input type="button" value="Back" onClick="history.back()">
 </form>
