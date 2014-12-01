@@ -34,7 +34,7 @@
 		<input type="number" name="players" value="" min="1"/>
 		
 		</br>
-		<input type="CHECKBOX" name="userCheck" checked>Include other user's collections
+		<input type="CHECKBOX" name="userCheck" checked>Include other users' collections
 	</div>
 	
 	

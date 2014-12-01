@@ -308,9 +308,9 @@
 
 		
 		//Final Results!
-		echo "<b>In your collection:</b> <br/>";
+		echo "<b>In your collection:</b> </br>";
 		if($currentList1->count()==0) {
-			echo "No games found. Try refining your search.";
+			echo "No games found. Try refining your search.</br>";
 		}
 		else {
 			$currentList1->rewind();
@@ -322,7 +322,7 @@
 		}
 		
 		if($_POST["userCheck"]=="on") {
-			echo "</br><b>In others' collections:</b> <br/>";
+			echo "</br><b>In others' collections:</b> </br>";
 			if($currentList2->count()==0) {
 				echo "No games found.";
 			}
