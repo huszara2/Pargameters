@@ -293,17 +293,21 @@
 		
 		//remove doubles from currentList2
 		if($_POST["userCheck"]=="on") {
-			$tempList=new SplDoublyLinkedList();
 			$currentList1->rewind();
 			while($currentList1->valid()) {
+				$tempList=new SplDoublyLinkedList();
 				$currentList2->rewind();
+				
 				while($currentList2->valid()) {
 					if($currentList2->current()->getTitle()!=$currentList1->current()->getTitle()) {
 						$tempList->push($currentList2->current());
 					}
 					$currentList2->next();
 				}
+				
+				$currentList2=$tempList;
 				$currentList1->next();
+				
 			}
 			$currentList2=$tempList;
 		}
