@@ -291,7 +291,7 @@
 			$currentList2=$tempList;
 		}
 		
-		//remove doubles from currentList2
+/*		//remove doubles from currentList2
 		if($_POST["userCheck"]=="on") {
 			$tempList=new SplDoublyLinkedList();
 			$currentList1->rewind();
@@ -308,7 +308,7 @@
 			}
 			$currentList2=$tempList;
 		}
-
+*/
 
 		
 		//Final Results!
