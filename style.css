@@ -13,10 +13,12 @@ body {
 	overflow: auto;
 }
 
-#centered {
+.centered {
 	font-family: Tahoma, Geneva, sans-serif;
 	color: 4D3E7F;
-	width: 600px;
+	max-width: 600px;
+	width: 100%;
+	margin: 25px auto;
 	overflow: auto;
 
 }
