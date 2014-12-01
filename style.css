@@ -15,9 +15,8 @@ body {
 
 #centered {
 	font-family: Tahoma, Geneva, sans-serif;
-	text-align: center;
 	color: 4D3E7F;
-	width: 1000px;
+	width: 600px;
 	overflow: auto;
 
 }
