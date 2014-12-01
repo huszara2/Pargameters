@@ -200,8 +200,8 @@
 			$currentList1=$tempList;
 		}
 		
-				//Filter by genre
-		if($genreCheck==true) {
+		//Filter by genre (second list)
+		if($genreCheck==true && $_POST["userCheck"]=="on") {
 			$tempList=new SplDoublyLinkedList();
 			$currentList2->rewind();
 			while($currentList2->valid()) {
@@ -213,8 +213,8 @@
 			$currentList2=$tempList;
 		}
 		
-		//Filter by type
-		if($typeCheck!="false") {
+		//Filter by type (second list)
+		if($typeCheck!="false" && $_POST["userCheck"]=="on") {
 			$tempList=new SplDoublyLinkedList();
 			$currentList2->rewind();
 			while($currentList2->valid()) {
@@ -226,8 +226,8 @@
 			$currentList2=$tempList;
 		}	
 		
-		//Filter by minimum age
-		if($minAgeC!=NULL && $minAgeC!=0) {
+		//Filter by minimum age (second list)
+		if($minAgeC!=NULL && $minAgeC!=0 && $_POST["userCheck"]=="on") {
 			$tempList=new SplDoublyLinkedList();
 			$currentList2->rewind();
 			while($currentList2->valid()) {
@@ -239,8 +239,8 @@
 			$currentList2=$tempList;
 		}	
 		
-		//filter by maximum age
-		if($maxAgeC!=NULL) {
+		//filter by maximum age (second list)
+		if($maxAgeC!=NULL && $_POST["userCheck"]=="on") {
 			$tempList=new SplDoublyLinkedList();
 			$currentList2->rewind();
 			while($currentList2->valid()) {
@@ -252,8 +252,8 @@
 			$currentList2=$tempList;
 		}
 		
-		//Filter by minimum time
-		if($minTimeC!=NULL && $minTimeC!=0) { 
+		//Filter by minimum time (second list)
+		if($minTimeC!=NULL && $minTimeC!=0 && $_POST["userCheck"]=="on") { 
 			$tempList=new SplDoublyLinkedList();
 			$currentList2->rewind();
 			while($currentList2->valid()) {
@@ -265,8 +265,8 @@
 			$currentList2=$tempList;
 		}	
 		
-		//Filter by maximum time
-		if($maxTimeC!=NULL) { 
+		//Filter by maximum time (second list)
+		if($maxTimeC!=NULL && $_POST["userCheck"]=="on") { 
 			$tempList=new SplDoublyLinkedList();
 			$currentList2->rewind();
 			while($currentList2->valid()) {
@@ -278,8 +278,8 @@
 			$currentList2=$tempList;
 		}	
 		
-		//Filter by players
-		if($playerCheck!=0) {
+		//Filter by players (second list)
+		if($playerCheck!=0 && $_POST["userCheck"]=="on") {
 			$tempList=new SplDoublyLinkedList();
 			$currentList2->rewind();
 			while($currentList2->valid()) {
@@ -291,6 +291,26 @@
 			$currentList2=$tempList;
 		}
 		
+		//remove doubles from currentList2
+		if($_POST["userCheck"]=="on") {
+			$tempList=new SplDoublyLinkedList();
+			$currentList1->rewind();
+			while($currentList1->valid()) {
+				$currentList2->rewind();
+				while($currentList2->valid()) {
+					if($currentList2->current()->getTitle()!=$currentList1->current()->getTitle()) {
+						$tempList->push($currentList2->current());
+					}
+					$currentList2->next();
+				}
+			}
+				$currentList1->next();
+			}
+			$currentList2=$tempList;
+		}
+
+
+		
 		//Final Results!
 		echo "<b>In your collection:</b> <br/>";
 		$currentList1->rewind();
@@ -299,13 +319,15 @@
 			echo "<br/>";
 			$currentList1->next();
 		}	
-		echo "</br><b>In others' collections:</b> <br/>";
-		$currentList2->rewind();
-		while($currentList2->valid()) {
-			echo $currentList2->current();
-			echo "<br/>";
-			$currentList2->next();
-		}	
+		if($_POST["userCheck"]=="on") {
+			echo "</br><b>In others' collections:</b> <br/>";
+			$currentList2->rewind();
+			while($currentList2->valid()) {
+				echo $currentList2->current();
+				echo "<br/>";
+				$currentList2->next();
+			}
+		}
 	}
 	else{
 		echo $errorMessage;

@@ -32,6 +32,8 @@
 		
 		<label for "players"></br><b>Players:</b></label>
 		<input type="number" name="players" value="" min="1"/>
+		
+		<input type="CHECKBOX" name="userCheck" checked>Include other user's collections
 	</div>
 	
 	
