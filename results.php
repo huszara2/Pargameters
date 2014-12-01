@@ -42,12 +42,6 @@
 		fclose($handle);
 	}	
 	
-	/* Games listed
-	*/
-	$list->push(new Game('MarioKart 8','Video',5,100,3,60,'Racing',1,4));
-	$list->push(new Game('MarioKart: Double Dash','Video',5,100,3,60,'Racing',1,4));
-
-	
 	 $currentList1=$list;
 	 $currentList2=$list2;
 
@@ -114,7 +108,7 @@
 			$tempList=new SplDoublyLinkedList();
 			$currentList1->rewind();
 			while($currentList1->valid()) {
-				if($_POST["genre"]==$currentList1->current()->getGenre()) {
+				if(strcasecmp($_POST["genre"],$currentList1->current()->getGenre())==0) {
 					$tempList->push($currentList1->current());
 				}
 				$currentList1->next();
@@ -205,7 +199,7 @@
 			$tempList=new SplDoublyLinkedList();
 			$currentList2->rewind();
 			while($currentList2->valid()) {
-				if($_POST["genre"]==$currentList2->current()->getGenre()) {
+				if(strcasecmp($_POST["genre"],$currentList2->current()->getGenre())==0) {
 					$tempList->push($currentList2->current());
 				}
 				$currentList2->next();
@@ -299,7 +293,7 @@
 				$currentList2->rewind();
 				
 				while($currentList2->valid()) {
-					if($currentList2->current()->getTitle()!=$currentList1->current()->getTitle()) {
+					if(strcasecmp($currentList2->current()->getTitle(),$currentList1->current()->getTitle())!=0) {
 						$tempList->push($currentList2->current());
 					}
 					$currentList2->next();
@@ -315,19 +309,30 @@
 		
 		//Final Results!
 		echo "<b>In your collection:</b> <br/>";
-		$currentList1->rewind();
-		while($currentList1->valid()) {
-			echo $currentList1->current();
-			echo "<br/>";
-			$currentList1->next();
-		}	
+		if($currentList1->count()==0) {
+			echo "No games found. Try refining your search.";
+		}
+		else {
+			$currentList1->rewind();
+			while($currentList1->valid()) {
+				echo $currentList1->current();
+				echo "<br/>";
+				$currentList1->next();
+			}
+		}
+		
 		if($_POST["userCheck"]=="on") {
 			echo "</br><b>In others' collections:</b> <br/>";
-			$currentList2->rewind();
-			while($currentList2->valid()) {
-				echo $currentList2->current();
-				echo "<br/>";
-				$currentList2->next();
+			if($currentList2->count()==0) {
+				echo "No games found.";
+			}
+			else {
+				$currentList2->rewind();
+				while($currentList2->valid()) {
+					echo $currentList2->current();
+					echo "<br/>";
+					$currentList2->next();
+				}
 			}
 		}
 	}
