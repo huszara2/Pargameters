@@ -90,7 +90,7 @@
 		}
 		
 		public function timeRange() {
-			return $this->minTime() . "-" . $this->maxTime();
+			return $this->minTime . "-" . $this->maxTime;
 		}
 				
 		public function getGenre() {

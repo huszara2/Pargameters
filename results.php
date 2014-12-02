@@ -325,7 +325,7 @@
 				echo "<tr><td>" . $currentList1->current()->getTitle() . "</td>";
 				echo "<td>" . $currentList1->current()->getType() . "</td>";
 				echo "<td>" . $currentList1->current()->ageRange() . "</td>";
-				echo "<td>" . $currentList1->current()->getMinTime() . "</td>";
+				echo "<td>" . $currentList1->current()->timeRange() . "</td>";
 				echo "<td>" . $currentList1->current()->getGenre() . "</td>";
 				echo "<td>" . $currentList1->current()->playerRange() . "</td>";
 				echo "</tr>";
