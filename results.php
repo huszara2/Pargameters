@@ -319,7 +319,7 @@
 			echo "No games found. Try refining your search.</br>";
 		}
 		else {
-			echo "<table><tr><th>Title</th><th>Type</th><th>Age</th><th>Time</th><th>Genre</th><th>Players</th></tr>"
+			echo "<table><tr><th>Title</th><th>Type</th><th>Age</th><th>Time</th><th>Genre</th><th>Players</th></tr>";
 			$currentList1->rewind();
 			while($currentList1->valid()) {
 				echo "<tr><td>" . $currentList1->current()->getTitle() . "</td>";
