@@ -23,3 +23,18 @@ body {
 	overflow: auto;
 
 }
+
+table#t01 tr:nth-child(even) {
+    background-color: #997BFF;
+	color: #D4C8FF;
+}
+
+table#t01 tr:nth-child(odd) {
+   background-color:#7A62CC;
+   color: #D4C8FF;
+}
+
+table#t01 th	{
+    background-color: #4D3E7F;
+    color: #D4C8FF;
+}

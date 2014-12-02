@@ -314,17 +314,24 @@
 
 		
 		//Final Results!
-		echo "<b>In your collection:</b> </br>";
+		echo "<b>In your collection:</b> </br><table>";
 		if($currentList1->count()==0) {
 			echo "No games found. Try refining your search.</br>";
 		}
 		else {
+			echo "<tr><th>Title</th><th>Type</th><th>Age</th><th>Time</th><th>Genre</th><th>Players</th></tr>"
 			$currentList1->rewind();
 			while($currentList1->valid()) {
-				echo $currentList1->current();
-				echo "<br/>";
+				echo "<tr><td>" . $currentList1->current()->getTitle() . "</td>";
+				echo "<td>" . $currentList1->current()->getType() . "</td>";
+				echo "<td>" . $currentList1->current()->ageRange() . "</td>";
+				echo "<td>" . $currentList1->current()->timeRange() . "</td>";
+				echo "<td>" . $currentList1->current()->getGenre() . "</td>";
+				echo "<td>" . $currentList1->current()->playerRange() . "</td>";
+				echo "</tr>";
 				$currentList1->next();
 			}
+			echo "</table>";
 		}
 		
 		if($_POST["userCheck"]=="on") {
