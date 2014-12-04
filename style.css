@@ -11,7 +11,7 @@
 */
 
 body {
-    background-color: D4C8FF;
+    background-color: D4C8FF !important;
 	font-family: Tahoma, Geneva, sans-serif;
 	text-align: center;
 	color: 4D3E7F;
