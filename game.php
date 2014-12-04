@@ -114,8 +114,7 @@
 		//-----------------------------------------------------------------------------------------
 		//  Function: getMinAge
 		//
-		//    Parameters:    
-		//    input String; 
+		//    Parameters:     
 		//
 		//    Pre-condition: 
 		//    Post-condition: Games object's title has been set to the new value
