@@ -27,7 +27,7 @@
 	</head>
 	<div>
 		<?php
-			echo "</br></br><b>Pargameters</b></br>";
+			echo "</br></br><b><big>Pargameters</big></b></br>";
 			echo "What would you like to play?</br>";
 		?>
 	</div>

@@ -27,7 +27,7 @@
 	<form action="results.php" method="post">
 		<div>
 			</br></br>
-			<?php echo "<b>Pargameters</b></br>";
+			<?php echo "<b><big>Pargameters</big></b></br>";
 				echo "What would you like to play?";
 			?>
 		</div>
