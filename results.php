@@ -32,7 +32,9 @@
 		?>
 	</div>
 
-	<div class="centered">		
+	<div class="centered">	
+		</br>
+		</br>
 		<?php
 			
 			/* Booleans/Strings used for checking if we want to search by each parameter

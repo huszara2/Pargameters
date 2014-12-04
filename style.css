@@ -14,7 +14,7 @@ body {
     background-color: D4C8FF !important;
 	font-family: Tahoma, Geneva, sans-serif;
 	text-align: center;
-	color: 4D3E7F;
+	color: 4D3E7F !important;
 }
 
 #inner {
@@ -27,7 +27,7 @@ body {
 
 .centered {
 	font-family: Tahoma, Geneva, sans-serif;
-	color: 4D3E7F;
+	color: 4D3E7F !important;
 	max-width: 700px;
 	text-align: left;
 	width: 100%;
