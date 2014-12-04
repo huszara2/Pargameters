@@ -345,7 +345,7 @@
 					echo "No games found. Try refining your search.</br>";
 				}
 				else {
-					echo "<table id=\"t01\" \data-sort-name=\"name\" data-sort-order=\"desc\"><tr><th>data-sortable=\"true\" Title</th><th>Type</th><th>Age</th><th>Time</th><th>Genre</th><th>Players</th></tr>";
+					echo "<script><table id=\"t01\" \data-sort-name=\"name\" data-sort-order=\"desc\"><tr><th>data-sortable=\"true\" Title</th><th>Type</th><th>Age</th><th>Time</th><th>Genre</th><th>Players</th></tr></script>";
 					$currentList1->rewind();
 					while($currentList1->valid()) {
 						echo "<tr><td>" . $currentList1->current()->getTitle() . "</td>";
