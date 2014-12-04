@@ -5,14 +5,16 @@
  *Independent Project
 /*
 
-/* Object for finding games
+/* Object for finding games, not in use at the moment. Intended to be used alongside results.php, but ended up inside of results.php because of formatting issues. Still here because I would like it to be used instead at some point.
 */
 
 	class finder{
 
 		private $typeCheck=false;
-		private $ageCheck=false;
-		private $timeCheck=false;
+		private $maxAgeCheck=false;
+		private $minAgeCheck=false;
+		private $maxTimeCheck=false;
+		private $minTimeCheck=false;
 		private $genreCheck=false;
 		private $playerCheck=false;
 		
@@ -61,10 +63,14 @@
 			$this->typeCheck=true;
 		}
 		
-		public function ageChange($minAge,$maxAge) {
+		public function minAgeChange($minAge) {
 			$this->minAge=$minAge;
+			$this->minAgeCheck=true;
+		}
+		
+		public function maxAgeChange($maxAge) {
 			$this->maxAge=$maxAge;
-			$this->ageCheck=true;
+			$this->maxAgeCheck=true;
 		}
 		
 		public function timeChange($minTime,$maxTime) {
