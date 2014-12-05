@@ -7,7 +7,7 @@
 // Description: Returns playable games based on user given parameters
 // Filename: results.php
 // Description: Finds playable games based on parameters, and shows playable results in a table.
-// Last modified on: December 1, 2014
+// Last modified on: December 4, 2014
 -->
 <body>
 	<?php include_once("game.php");?>
@@ -54,6 +54,7 @@
 			$list=new SplDoublyLinkedList();
 			$list2=new SplDoublyLinkedList();
 			
+			//starting with the first row, put elements from csv file into game objects to make up user's collection
 			$row = 1;
 			if (($handle = fopen("user1.csv", "r")) !== FALSE) {
 				while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
@@ -64,6 +65,7 @@
 				fclose($handle);
 			}	
 			
+			//starting with the first row, put elements from csv file into game objects to make up other users' collection
 			$row = 1;
 			if (($handle = fopen("user2.csv", "r")) !== FALSE) {
 				while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
@@ -77,11 +79,20 @@
 			$currentList1=$list;
 			$currentList2=$list2;
 
-			
+			/*
+			//-----------------------------------------------------------------------------------------
+			//    Set a boolean check for genre to true if the genre field has been filled out	//-----------------------------------------------------------------------------------------
+			*/	
 			if($_POST["genre"]!="") {
 				$genreCheck=true;
 			}	
 			
+			/*
+			//-----------------------------------------------------------------------------------------
+			//    If one of the two game types are unchecked, search on the remaining type, if neither is checked, 
+			//	  search neither
+			//-----------------------------------------------------------------------------------------
+			*/	
 			if($_POST["type_Video"]!="on" || $_POST["type_TT"]!="on") {
 				if($_POST["type_Video"]=="on") {
 					$typeCheck="Video";
@@ -94,14 +105,31 @@
 				}
 			}
 			
+			/*
+			//-----------------------------------------------------------------------------------------
+			//   Add to the error message if the user requests an age range a-b, where a>b  
+			//-----------------------------------------------------------------------------------------
+			*/	
 			if($_POST["minAge"]>$_POST["maxAge"]) {
 				$errorMessage= $errorMessage . "The age range you indicated should be in numerical order. <br/>";
 			}
 			
+			/*
+			//-----------------------------------------------------------------------------------------
+			//   If the user wants a minimum age other than 0, set the minimum age to 0 
+			//-----------------------------------------------------------------------------------------
+			*/
 			if($_POST["minAge"]!=0) {
 				$minAgeC=$_POST["minAge"];
 			}
 			
+			/*
+			//-----------------------------------------------------------------------------------------
+			//   Set the maximum age to filter by. If an age is selected (and 18+ is unchecked), set the maxage to the selected age.
+			//	 If 18+ is on, but the second part of the range is not 17, let the user know there is a gap in their range.
+			// 	 If only 18+ is checked, make 18 the minimum age, and have no maximum age set.
+			//-----------------------------------------------------------------------------------------
+			*/
 			if($_POST["maxAge"]<=17 && $_POST["eighteenPlus"]!="on" && $_POST["maxAge"]!=NULL) { //if we set a maxAge less than 17, and eighteen plus isn't on
 				$maxAgeC=$_POST["maxAge"];
 			}
@@ -112,14 +140,32 @@
 				$minAgeC=18;
 			}
 			
+			/*
+			//-----------------------------------------------------------------------------------------
+			//   Add to the error message if the user requests an time range a-b, where a>b  
+			//-----------------------------------------------------------------------------------------
+			*/
 			if($_POST["minTime"]>$_POST["maxTime"]) {
 				$errorMessage= $errorMessage . "The time range you indicated should be in numerical order. <br/>";
 			}
 			
+			/*
+			//-----------------------------------------------------------------------------------------
+			//   If the user wants a minimum time other than 0, set the minimum time to what was indicated.  
+			//-----------------------------------------------------------------------------------------
+			*/
 			if($_POST["minTime"]!=0) {
 				$minTimeC=$_POST["minTime"];
 			}
-			
+
+			/*
+			//-----------------------------------------------------------------------------------------
+			//   Set the maximum time to filter by. If a time is selected (and 120+ is unchecked)
+			//   set the maxtime to the selected time.
+			//	 If 120+ is on, but the second part of the range is not 119, let the user know there is a gap in their range.
+			// 	 If only 120+ is checked, make 120 the minimum time, and have no maximum time set.
+			//-----------------------------------------------------------------------------------------
+			*/
 			if($_POST["maxTime"]<=119 && $_POST["twoPlus"]!="on" && $_POST["maxTime"]!=NULL) { //if we set a maxTime less than 120, and 120 plus isn't on
 				$maxTimeC=$_POST["maxTime"];
 			}
@@ -129,13 +175,29 @@
 			else if($_POST["twoPlus"]=="on" && $_POST["maxTime"]==NULL && $_POST["minTime"]==NULL) { //if everything but 120+ is blank, we only want to search 120+
 				$minTimeC=120;
 			}
-				
+			
+			/*
+			//-----------------------------------------------------------------------------------------
+			//   If the user indicates the number of players, set player check to that number.  
+			//-----------------------------------------------------------------------------------------
+			*/			
 			if($_POST["players"]!=NULL) {
 				$playerCheck=$_POST["players"];
 			}
 			
+			/*
+			//-----------------------------------------------------------------------------------------
+			//   If the error message is empty, proceed with filter. If not, print the error message.
+			//-----------------------------------------------------------------------------------------
+			*/
 			if($errorMessage=="") {
-				//Filter by genre
+				/*
+				//-----------------------------------------------------------------------------------------
+				//   If the user wants to filter by genre, go through the user list, pushing all valid
+				//   elements to a new list. After everything in the userlist has been checked, change 
+				//   the currentlist to the filtered list.
+				//-----------------------------------------------------------------------------------------
+				*/
 				if($genreCheck==true) {
 					$tempList=new SplDoublyLinkedList();
 					$currentList1->rewind();
@@ -148,7 +210,13 @@
 					$currentList1=$tempList;
 				}
 				
-				//Filter by type
+				/*
+				//-----------------------------------------------------------------------------------------
+				//   If the user wants to filter by type, go through the user list, pushing all valid
+				//   elements to a new list. After everything in the userlist has been checked, change 
+				//   the currentlist to the filtered list.
+				//-----------------------------------------------------------------------------------------
+				*/
 				if($typeCheck!="false") {
 					$tempList=new SplDoublyLinkedList();
 					$currentList1->rewind();
@@ -161,7 +229,13 @@
 					$currentList1=$tempList;
 				}	
 				
-				//Filter by minimum age
+				/*
+				//-----------------------------------------------------------------------------------------
+				//   If the user wants to filter by minimum age, go through the user list, pushing all valid
+				//   elements to a new list. After everything in the userlist has been checked, change 
+				//   the currentlist to the filtered list.
+				//-----------------------------------------------------------------------------------------
+				*/
 				if($minAgeC!=NULL && $minAgeC!=0) {
 					$tempList=new SplDoublyLinkedList();
 					$currentList1->rewind();
@@ -174,7 +248,13 @@
 					$currentList1=$tempList;
 				}	
 				
-				//filter by maximum age
+				/*
+				//-----------------------------------------------------------------------------------------
+				//   If the user wants to filter by maximum age, go through the user list, pushing all valid
+				//   elements to a new list. After everything in the userlist has been checked, change 
+				//   the currentlist to the filtered list.
+				//-----------------------------------------------------------------------------------------
+				*/
 				if($maxAgeC!=NULL) {
 					$tempList=new SplDoublyLinkedList();
 					$currentList1->rewind();
@@ -187,7 +267,13 @@
 					$currentList1=$tempList;
 				}
 				
-				//Filter by minimum time
+				/*
+				//-----------------------------------------------------------------------------------------
+				//   If the user wants to filter by minimum time, go through the user list, pushing all valid
+				//   elements to a new list. After everything in the userlist has been checked, change 
+				//   the currentlist to the filtered list.
+				//-----------------------------------------------------------------------------------------
+				*/
 				if($minTimeC!=NULL && $minTimeC!=0) { 
 					$tempList=new SplDoublyLinkedList();
 					$currentList1->rewind();
@@ -200,7 +286,15 @@
 					$currentList1=$tempList;
 				}	
 				
-				//Filter by maximum time
+				/*
+				//-----------------------------------------------------------------------------------------
+				//   If the user wants to filter by maximum age, go through the user list, pushing all valid
+				//   elements to a new list. After everything in the userlist has been checked, change 
+				//   the currentlist to the filtered list.
+				// 	 Valid elements are games with a minimum time that is longer than the indicated maximum
+				//	 wanted time.
+				//-----------------------------------------------------------------------------------------
+				*/
 				if($maxTimeC!=NULL) { 
 					$tempList=new SplDoublyLinkedList();
 					$currentList1->rewind();
@@ -213,7 +307,14 @@
 					$currentList1=$tempList;
 				}	
 				
-				//Filter by players
+				/*
+				//-----------------------------------------------------------------------------------------
+				//   If the user wants to filter by the number of players, go through the user list, pushing
+				//   all valid elements to a new list. After everything in the userlist has been checked,
+				//   set the currentlist to the filtered list.
+				//   Valid elements are games with a minimum number of players <= players desired <= maximum players
+				//-----------------------------------------------------------------------------------------
+				*/
 				if($playerCheck!=0) {
 					$tempList=new SplDoublyLinkedList();
 					$currentList1->rewind();
@@ -226,7 +327,12 @@
 					$currentList1=$tempList;
 				}
 				
-				//Filter by genre (from other users list)
+				/*
+				//-----------------------------------------------------------------------------------------
+				//   If the user wants to filter by genre, and the user wants to see other collections,
+				//	 filter the other collections.
+				//-----------------------------------------------------------------------------------------
+				*/
 				if($genreCheck==true && $_POST["userCheck"]=="on") {
 					$tempList=new SplDoublyLinkedList();
 					$currentList2->rewind();
@@ -239,7 +345,12 @@
 					$currentList2=$tempList;
 				}
 				
-				//Filter by type (from other users list)
+				/*
+				//-----------------------------------------------------------------------------------------
+				//   If the user wants to filter by type, and the user wants to see other collections,
+				//	 filter the other collections.
+				//-----------------------------------------------------------------------------------------
+				*/
 				if($typeCheck!="false" && $_POST["userCheck"]=="on") {
 					$tempList=new SplDoublyLinkedList();
 					$currentList2->rewind();
@@ -252,7 +363,12 @@
 					$currentList2=$tempList;
 				}	
 				
-				//Filter by minimum age (second list)
+				/*
+				//-----------------------------------------------------------------------------------------
+				//   If the user wants to filter by genre, and the user wants to see other collections,
+				//	 filter the other collections by selected genre.
+				//-----------------------------------------------------------------------------------------
+				*/
 				if($minAgeC!=NULL && $minAgeC!=0 && $_POST["userCheck"]=="on") {
 					$tempList=new SplDoublyLinkedList();
 					$currentList2->rewind();
@@ -265,7 +381,12 @@
 					$currentList2=$tempList;
 				}	
 				
-				//filter by maximum age (second list)
+				/*
+				//-----------------------------------------------------------------------------------------
+				//   If the user wants to filter by maximum age, and the user wants to see other collections,
+				//	 filter the other collections accordingly.
+				//-----------------------------------------------------------------------------------------
+				*/
 				if($maxAgeC!=NULL && $_POST["userCheck"]=="on") {
 					$tempList=new SplDoublyLinkedList();
 					$currentList2->rewind();
@@ -278,7 +399,12 @@
 					$currentList2=$tempList;
 				}
 				
-				//Filter by minimum time (second list)
+				/*
+				//-----------------------------------------------------------------------------------------
+				//   If the user wants to filter by minimum time, and the user wants to see other collections,
+				//	 filter the other collections accordingly.
+				//-----------------------------------------------------------------------------------------
+				*/
 				if($minTimeC!=NULL && $minTimeC!=0 && $_POST["userCheck"]=="on") { 
 					$tempList=new SplDoublyLinkedList();
 					$currentList2->rewind();
@@ -291,7 +417,12 @@
 					$currentList2=$tempList;
 				}	
 				
-				//Filter by maximum time (second list)
+				/*
+				//-----------------------------------------------------------------------------------------
+				//   If the user wants to filter by genre, and the user wants to see other collections,
+				//	 filter the other collections accordingly.
+				//-----------------------------------------------------------------------------------------
+				*/
 				if($maxTimeC!=NULL && $_POST["userCheck"]=="on") { 
 					$tempList=new SplDoublyLinkedList();
 					$currentList2->rewind();
@@ -304,7 +435,12 @@
 					$currentList2=$tempList;
 				}	
 				
-				//Filter by players (second list)
+				/*
+				//-----------------------------------------------------------------------------------------
+				//   If the user wants to filter by player number, and the user wants to see other collections,
+				//	 filter the other collections accordingly.
+				//-----------------------------------------------------------------------------------------
+				*/
 				if($playerCheck!=0 && $_POST["userCheck"]=="on") {
 					$tempList=new SplDoublyLinkedList();
 					$currentList2->rewind();
@@ -317,7 +453,12 @@
 					$currentList2=$tempList;
 				}
 				
-				//remove doubles from currentList2
+				/*
+				//-----------------------------------------------------------------------------------------
+				//   If the user wants to see other users' collections, remove all elements of other users collections
+				// 	 that are also part of the user collection.
+				//-----------------------------------------------------------------------------------------
+				*/
 				if($_POST["userCheck"]=="on") {
 					$currentList1->rewind();
 					while($currentList1->valid()) {
@@ -339,7 +480,12 @@
 				}
 
 				
-				//Final Results!
+				/*
+				//-----------------------------------------------------------------------------------------
+				//   If after all filters are applied, no games are in the list, inform the user to refine
+				//   their search. Otherwise, give the user a table of valid results.
+				//-----------------------------------------------------------------------------------------
+				*/
 				echo "<b>In your collection:</b> </br>";
 				if($currentList1->count()==0) {
 					echo "No games found. Try refining your search.</br>";
@@ -360,6 +506,13 @@
 					echo "</table>";
 				}
 				
+				/*
+				//-----------------------------------------------------------------------------------------
+				//   If the user wanted to see other collections, also show them in a table if there
+				//   were any valid games. If there were none, tell the user that none were found in other
+				//   collections.
+				//-----------------------------------------------------------------------------------------
+				*/
 				if($_POST["userCheck"]=="on") {
 					echo "</br><b>In others' collections:</b> </br>";
 					if($currentList2->count()==0) {
@@ -389,6 +542,7 @@
 		?>
 	</div>
 
+    <!-- Back button to go back to index.php-->
 	<form>
 		<input type="button" value="Back" onClick="history.back()">
 	</form>

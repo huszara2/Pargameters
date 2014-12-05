@@ -7,9 +7,13 @@
 // Description: Returns playable games based on user given parameters
 // Filename: index.php
 // Description: Takes desired parameters from user, redirects them to results.php.
-// Last modified on: December 1, 2014
+// Last modified on: December 4, 2014
 -->
 <body>
+
+	<!-- 
+	// Bootstrap and page title
+	-->
 	<head>
 		<link rel="stylesheet" type="text/css" href="style.css">
 		<!-- Latest compiled and minified CSS -->
@@ -23,7 +27,10 @@
 
 		<title>Pargameters</title>
 	</head>
-	
+
+	<!-- 
+	// Form that redirects to results after enter/button press
+	-->	
 	<form action="results.php" method="post">
 		<div>
 			</br></br>
@@ -31,6 +38,9 @@
 				echo "What would you like to play?";
 			?>
 		</div>
+		<!-- 
+		// Options for finding games
+		-->	
 		<div class="centered">
 			<label for "genre"><b>Genre</b>:</label>
 			<input type="text" name="genre"/>

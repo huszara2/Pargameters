@@ -5,7 +5,9 @@
  *Independent Project
 /*
 
-/* Object for finding games, not in use at the moment. Intended to be used alongside results.php, but ended up inside of results.php because of formatting issues. Still here because I would like it to be used instead at some point.
+/* Object for finding games, not in use at the moment. Intended to be used alongside results.php, but ended up inside of results.php
+because of formatting issues. Still here because I would like it to be used instead at some point. As of right now, results.php should
+not really be handling the search, although it is for the time being.
 */
 
 	class finder{
